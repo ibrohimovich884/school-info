@@ -1,0 +1,7 @@
+.completed{
+    text-decoration: line-through;
+    color: red;
+}
+.not-completed{
+    color: green;
+}
