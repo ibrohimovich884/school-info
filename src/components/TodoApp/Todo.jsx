@@ -31,7 +31,7 @@ function Todo() {
                         </li>
                     </ul>
                 ))}
-                <a href="">Create time: 1:50</a>
+                <a href="https://github.com/ibrohimovich884/NOte/tree/main/src">Create time: 1:50</a>
                 </div>
             </div>
         </section>
