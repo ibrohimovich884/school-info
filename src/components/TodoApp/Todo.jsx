@@ -13,6 +13,7 @@ function Todo() {
                     ? { id: item.id, title: item.title, completed: !item.completed }
                     : item
             )
+            
         )
     }
 
@@ -30,6 +31,7 @@ function Todo() {
                         </li>
                     </ul>
                 ))}
+                <a href="">Create time: 1:50</a>
                 </div>
             </div>
         </section>
