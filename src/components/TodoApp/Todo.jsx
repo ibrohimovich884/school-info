@@ -1,35 +1,39 @@
-    import React from 'react'
-    import data from "./data"
-    import "./Todo.css"
-    import { useState } from 'react'
+import { useState } from 'react'
+import data from "./data"
+import "./Todo.css"
 
+function Todo() {
+    const [todos, setTodos] = useState(data)
 
-    function Todo() {
-
-        const [completed, setCompleted] = useState(false)
-        return (
-            <>
-                <section>
-                    <div className="container">
-                        <div className="todo-list">
-                            <div className="todo-content">
-                                <h2>Ishlar ro'yxati</h2>
-                                {data.map((item) => (
-                                    <div key={item.id} className="todo-item">
-                                        <ul>
-                                            {console.log(item)}
-                                            <li onClick={} className={item.completed ? "completed" : "not-completed"}>{item.title}</li>
-                                        </ul>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </>
+    const toggleTodo = (id) => {
+        console.log(id)
+        setTodos(
+            todos.map((item) =>
+                item.id === id
+                    ? { id: item.id, title: item.title, completed: !item.completed }
+                    : item
+            )
         )
-
     }
-    console.log(data)
 
-    export default Todo
+
+    return (
+        <section>
+            <div className="container">
+                <div className="todo-list">
+
+                <h2>Ishlar ro'yxati</h2>
+                {todos.map((item) => (
+                    <ul className="todo-item" key={item.id}>
+                        <li onClick={() => toggleTodo(item.id)} className={item.completed ? "completed" : "not-completed"}>
+                            {item.title}
+                        </li>
+                    </ul>
+                ))}
+                </div>
+            </div>
+        </section>
+    )
+}
+
+export default Todo
