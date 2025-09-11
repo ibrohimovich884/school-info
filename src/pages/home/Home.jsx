@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import "./Home.css"
+import "./home.css"
 
 function Home() {
     return (
