@@ -7,7 +7,6 @@ import RootLayout from './layout/RootLayout.jsx'
 import Grade8a from './pages/grade8a/Grade8a.jsx'
 import GradeLayout from "./layout/GradeLayout.jsx"
 
-
 function App() {
 
   return (
