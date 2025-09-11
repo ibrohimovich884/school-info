@@ -32,7 +32,6 @@ function Header() {
             <li><NavLink to="/" onClick={close} end>Home</NavLink></li>
             <li><NavLink to="/about" onClick={close}>About</NavLink></li>
             <li><NavLink to="/contact" onClick={close}>Contact</NavLink></li>
-            <li><NavLink to="/grade" onClick={close}>Grade</NavLink></li>
           </ul>
         </nav>
       </div>

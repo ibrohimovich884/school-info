@@ -4,9 +4,11 @@ import { Outlet } from "react-router"
 function RootLayout() {
     return (
         <>
-            <header><Header /></header> 
-            <main><Outlet/></main>
-            <footer><Footer /></footer>
+            <div className="layout">
+                <header><Header /></header>
+                <main><Outlet /></main>
+                <footer><Footer /></footer>
+            </div>
         </>
     )
 }

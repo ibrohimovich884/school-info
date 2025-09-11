@@ -5,25 +5,26 @@ import Contact from './pages/contact/Contact.jsx'
 import RootLayout from './layout/RootLayout.jsx'
 
 import Grade8a from './pages/grade8a/Grade8a.jsx'
-import GradeLayout from "./layout/GradeLayout.jsx"
+import Grade8b from './pages/grade8b/Grade8b.jsx'
+import Grade9a from './pages/grade9a/Grade9a.jsx'
+import Grade9b from './pages/grade9b/Grade9b.jsx'
 
 function App() {
 
   return (
     <>
       <Routes>
-        <Route path='/' element={<RootLayout />}>
-          <Route index element={<Home />} />
-          <Route path='about' element={<About />} />
-          <Route path='contact' element={<Contact />} />
+         <Route path='/' element={<RootLayout />}>
+        <Route index element={<Home />} />
+        <Route path='about' element={<About />} />
+        <Route path='contact' element={<Contact />} />
 
-          <Route path='grade' element={<GradeLayout />}>
-            <Route path='8a' element={<Grade8a />} />
-            {/* <Route path='8b' element={<Grade8b />} /> */}
-            {/* <Route path='9a' element={<Grade9a />} /> */}
-            {/* <Route path='9b' element={<Grade9b />} /> */}
-          </Route>
-        </Route>
+
+        <Route path='grade/8a' element={<Grade8a />} />
+        <Route path='grade/8b' element={<Grade8b />} />
+        <Route path='grade/9a' element={<Grade9a />} />
+        <Route path='grade/9b' element={<Grade9b />} />
+      </Route>
       </Routes>
 
     </>
