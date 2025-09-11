@@ -6,7 +6,7 @@ function RootLayout() {
         <>
             <header><Header /></header> 
             <main><Outlet/></main>
-            <footer> <Footer /></footer>
+            <footer><Footer /></footer>
         </>
     )
 }
