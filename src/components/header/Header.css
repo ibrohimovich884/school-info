@@ -8,13 +8,16 @@
 
 /* Header */
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 60;
-  background: var(--bg);  /* shaffof emas - qattiq fon */
+  left: 0;
+  right: 0;
+  z-index: 1000; /* yuqorida turishi uchun */
+  background: var(--bg);
   border-bottom: 1px solid rgba(255,255,255,0.1);
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
+
 
 .header-inner {
   max-width: 1400px;
