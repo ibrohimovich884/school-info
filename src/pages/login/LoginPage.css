@@ -1,0 +1,118 @@
+/* Umumiy container */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f8fafc; /* sayt foniga mos */
+  font-family: "Segoe UI", Arial, sans-serif;
+  padding: 20px;
+}
+
+/* Login kartasi */
+.login-form {
+  background: #fff;
+  padding: 35px 30px;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-form:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Sarlavha */
+.login-form h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b; /* grade-title rangi */
+  margin-bottom: 10px;
+}
+
+.login-form p {
+  font-size: 14px;
+  color: #64748b; /* kulrang matn */
+  margin-bottom: 22px;
+}
+
+/* Input guruh */
+.form-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #334155;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: border 0.25s ease, box-shadow 0.25s ease;
+  background: #f8fafc;
+}
+
+.form-group input:focus {
+  border-color: #facc15;
+  outline: none;
+  box-shadow: 0 0 6px rgba(250, 204, 21, 0.4);
+}
+
+/* Tugma */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  background: linear-gradient(135deg, #fde68a, #facc15);
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-btn:hover {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(245, 158, 11, 0.4);
+}
+
+/* Qo‘shimcha link */
+.login-form .extra-links {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.login-form .extra-links a {
+  color: #1e293b;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-form .extra-links a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-form {
+    padding: 25px 20px;
+  }
+
+  .login-form h1 {
+    font-size: 20px;
+  }
+}
