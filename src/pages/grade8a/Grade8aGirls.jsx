@@ -1,9 +1,35 @@
-import React from 'react'
+import { useState } from "react";
+import { schoolData } from "../../data";
+import ProfileCard from "../ProfileCard";
+import "../Grade.css";
 
-function Grade8aGirls() {
-  return (
-    <div>Grade8aGirls</div>
-  )
+const schoolName = "40-maktab";
+const grade = "Grade-8a";
+const girls = schoolData[schoolName][0][grade][0]["Girls"];
+
+function GirlsPage() {
+    const [activeIndex, setActiveIndex] = useState(null);
+
+    return (
+        <div className="grade-8a">
+            <h1>{grade} – Girls 👧</h1>
+            <div className="card-list">
+                {girls.map((girlObj, i) => {
+                    const nameKey = Object.keys(girlObj)[0];
+                    const info = girlObj[nameKey][0];
+                    return (
+                        <ProfileCard
+                            key={`girl-${i}`}
+                            info={info}
+                            index={`girl-${i}`}
+                            activeIndex={activeIndex}
+                            setActiveIndex={setActiveIndex}
+                        />
+                    );
+                })}
+            </div>
+        </div>
+    );
 }
 
-export default Grade8aGirls
+export default GirlsPage;

@@ -1,9 +1,35 @@
-import React from 'react'
+import { useState } from "react";
+import { schoolData } from "../../data";
+import ProfileCard from "../ProfileCard";
+import "../Grade.css";
 
-function Grade8aBoys() {
+const schoolName = "40-maktab";
+const grade = "Grade-8a";
+const boys = schoolData[schoolName][0][grade][0]["Boys"];
+
+function BoysPage() {
+  const [activeIndex, setActiveIndex] = useState(null);
+
   return (
-    <div>Grade8aBoys</div>
-  )
+    <div className="grade-8a">
+      <h1>{grade} – Boys 👦</h1>
+      <div className="card-list">
+        {boys.map((boyObj, i) => {
+          const nameKey = Object.keys(boyObj)[0];
+          const info = boyObj[nameKey][0];
+          return (
+            <ProfileCard
+              key={`boy-${i}`}
+              info={info}
+              index={`boy-${i}`}
+              activeIndex={activeIndex}
+              setActiveIndex={setActiveIndex}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
-export default Grade8aBoys
+export default BoysPage;

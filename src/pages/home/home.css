@@ -9,12 +9,11 @@
 .grade-title { 
     font-size: 2rem;
     font-weight: 700;
-    color: #1e293b; /* Dark slate */
+    color: #1e293b;
     margin-bottom: 32px;
     letter-spacing: 0.5px;
 }
 
-/* Grid for grades */
 .grade-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -22,7 +21,6 @@
     justify-items: center;
 }
 
-/* Grade buttons */
 .grade-card {
     display: flex;
     align-items: center;
@@ -54,7 +52,6 @@
     box-shadow: 0 8px 16px rgba(245, 158, 11, 0.5);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .grade-title {
         font-size: 1.6rem;
