@@ -5,7 +5,7 @@ function Home() {
     return (
         <>
             <div className="container">
-                <h2 className="grade-title">Sinfingizni tanlang</h2>
+                <h2 className="grade-title">Sinfingizni tanlang!</h2>
                 <div className="grade-list">
                     <NavLink to="/grade/8a" className="grade-card">8-A</NavLink>
                     <NavLink to="/grade/8b" className="grade-card">8-B</NavLink>

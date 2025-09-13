@@ -1,6 +1,6 @@
 /* Asosiy container */
 
-.grade-8a {
+.grade {
     max-width: 1100px;
     margin: 20px auto;
     padding: 20px;
@@ -10,7 +10,7 @@
 }
 
 /* Sarlavha */
-.grade-8a h1 {
+.grade h1 {
     text-align: center;
     font-size: 30px;
     margin-bottom: 30px;
@@ -19,11 +19,11 @@
 }
 
 /* Bo‘limlar */
-.grade-8a section {
+.grade section {
     margin-bottom: 40px;
 }
 
-.grade-8a h2 {
+.grade h2 {
     font-size: 22px;
     margin-bottom: 20px;
     color: #34495e;

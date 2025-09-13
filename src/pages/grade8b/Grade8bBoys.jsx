@@ -4,10 +4,10 @@ import ProfileCard from "../ProfileCard";
 import "../Grade.css";
 
 const schoolName = "40-maktab";
-const grade = "Grade-8a";
+const grade = "Grade-8b";
 const boys = schoolData[schoolName][0][grade][0]["Boys"];
 
-function BoysPage8a() {
+function BoysPage8b() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   return (
@@ -32,4 +32,4 @@ function BoysPage8a() {
   );
 }
 
-export default BoysPage8a;
+export default BoysPage8b;
