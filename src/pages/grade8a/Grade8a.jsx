@@ -1,5 +1,5 @@
 import { Link, Routes, Route, Outlet } from "react-router";
-import GirlsPage from "./Grade8aGirls";
+// import GirlsPage from "./Grade8aGirls";
 import BoysPage from "./Grade8aBoys";
 import "../Grade.css";
 

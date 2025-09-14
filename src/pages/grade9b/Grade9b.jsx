@@ -1,9 +1,9 @@
 import { Link, Routes, Route, Outlet } from "react-router";
-import GirlsPage from "./Grade8bGirls";
-import BoysPage from "./Grade8bBoys";
+import GirlsPage from "./Grade9bGirls";
+import BoysPage from "./Grade9bBoys";
 import "../Grade.css";
 
-const grade = "Grade-8a";
+const grade = "Grade-9b";
 function Grade9b() {
   return (
     <div className="grade8a-container">

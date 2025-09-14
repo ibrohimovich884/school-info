@@ -1,8 +1,8 @@
 import { Link, Routes, Route, Outlet } from "react-router";
-import GirlsPage from "./Grade8aGirls";
-import BoysPage from "./Grade8aBoys";
+import GirlsPage from "./Grade9aGirls";
+import BoysPage from "./Grade9aBoys";
 import "../Grade.css";
-
+  
 const grade = "Grade-9a";
 function Grade9a() {
   return (

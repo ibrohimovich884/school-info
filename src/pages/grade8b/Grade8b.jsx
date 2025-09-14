@@ -3,7 +3,7 @@ import GirlsPage from "./Grade8bGirls";
 import BoysPage from "./Grade8bBoys";
 import "../Grade.css";
 
-const grade = "Grade-8a";
+const grade = "Grade-8b";
 
 function Grade8b() {
   return (
