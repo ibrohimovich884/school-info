@@ -22,7 +22,11 @@ import Grade8b from './pages/grade8b/Grade8b.jsx';
 import GirlsPage8b from "./pages/grade8b/Grade8bGirls.jsx";
 import BoysPage8b from "./pages/grade8b/Grade8bBoys.jsx"
 
+// Grade 9a
 import Grade9a from './pages/grade9a/Grade9a.jsx';
+import GirlsPage9a from './pages/grade9a/Grade8aGirls.jsx'
+import BoysPage9a from './pages/grade9a/Grade8aBoys.jsx'
+
 import Grade9b from './pages/grade9b/Grade9b.jsx';
 import Grade9d from './pages/grade9d/Grade9d.jsx';
 
@@ -52,10 +56,16 @@ function App() {
             <Route path="boys" element={<BoysPage8a />} />
           </Route>
 
-          {/* 8b, 9a, 9b */}
+          {/* 8b*/}
           <Route path="grade/8b" element={<Grade8b />}>
             <Route path="girls" element={<GirlsPage8b />} />
             <Route path="boys" element={<BoysPage8b />} />
+          </Route>
+
+          {/* 9a */}
+          <Route path="grade/9a" element={<Grade9a />}>
+            <Route path="girls" element={<GirlsPage9a />} />
+            <Route path="boys" element={<BoysPage9a />} />
           </Route>
           <Route path="grade/9a" element={<Grade9a />} />
           <Route path="grade/9b" element={<Grade9b />} />

@@ -3,8 +3,9 @@ import GirlsPage from "./Grade8aGirls";
 import BoysPage from "./Grade8aBoys";
 import "../Grade.css";
 
-const grade = "Grade-9a";
-function Grade9a() {
+const grade = "Grade-8a";
+
+function Grade8a() {
   return (
     <div className="grade8a-container">
       <h1>{grade}</h1>
@@ -17,4 +18,4 @@ function Grade9a() {
   );
 }
 
-export default Grade9a
+export default Grade8a;
