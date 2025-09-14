@@ -1,9 +1,19 @@
-import React from 'react'
+import { Link, Routes, Route, Outlet } from "react-router";
+import GirlsPage from "./Grade8bGirls";
+import BoysPage from "./Grade8bBoys";
+import "../Grade.css";
 
-function Grade8b() {
+const grade = "Grade-8a";
+function Grade9b() {
   return (
-    <div>Grade8b</div>
-  )
+    <div className="grade8a-container">
+      <h1>{grade}</h1>
+      <nav>
+        <Link to="girls">Girls 👧</Link>
+        <Link to="boys">Boys 👦</Link>
+      </nav>
+      <Outlet />
+    </div>)
 }
 
-export default Grade8b
+export default Grade9b
