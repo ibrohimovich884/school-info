@@ -8,8 +8,8 @@ import RootLayout from './layout/RootLayout.jsx';
 
 // Grade 7a
 import Grade7a from "./pages/grade7a/Grade7a.jsx";
-// import GirlsPage7a from "./pages/grade7a/Grade7aGirls.jsx";
-// import BoysPage7a from "./pages/grade7a/Grade7aBoys.jsx";
+import GirlsPage7a from "./pages/grade7a/Grade7aGirls.jsx";
+import BoysPage7a from "./pages/grade7a/Grade7aBoys.jsx";
 
 // Grade 7b
 import Grade7b from "./pages/grade7b/Grade7b.jsx"
@@ -47,6 +47,7 @@ function App() {
 
   return (
     <Routes>
+      {/* Login sahifa */}
       <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
 
       {!isLoggedIn ? (
@@ -57,27 +58,23 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
 
-          {/* 7a */}
           <Route path="grade/7a" element={<Grade7a />}>
-            {/* <Route path="girls" element={<GirlsPage7a />} /> */}
-            {/* <Route path="boys" element={<BoysPage7a />} /> */}
+            <Route path="girls" element={<GirlsPage7a />} />
+            <Route path="boys" element={<BoysPage7a />} />
           </Route>
 
           <Route path="grade/7b" element={<Grade7b />} />
 
-          {/* 8a */}
           <Route path="grade/8a" element={<Grade8a />}>
             <Route path="girls" element={<GirlsPage8a />} />
             <Route path="boys" element={<BoysPage8a />} />
           </Route>
 
-          {/* 8b*/}
           <Route path="grade/8b" element={<Grade8b />}>
             <Route path="girls" element={<GirlsPage8b />} />
             <Route path="boys" element={<BoysPage8b />} />
           </Route>
 
-          {/* 9a */}
           <Route path="grade/9a" element={<Grade9a />}>
             <Route path="girls" element={<GirlsPage9a />} />
             <Route path="boys" element={<BoysPage9a />} />
@@ -88,11 +85,11 @@ function App() {
             <Route path="boys" element={<BoysPage9b />} />
           </Route>
 
-          {/* 9d */}
           <Route path="grade/9d" element={<Grade9d />}>
             <Route path="girls" element={<GirlsPage9d />} />
             <Route path="boys" element={<BoysPage9d />} />
           </Route>
+
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       )}

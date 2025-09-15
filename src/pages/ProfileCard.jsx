@@ -34,10 +34,10 @@ function ProfileCard({ info, index, activeIndex, setActiveIndex }) {
           <div className="details">
             <p><strong>Full name:</strong> {cachedInfo["Full name"]}</p>
             <p><strong>Birthday:</strong> {cachedInfo.Birthday}</p>
-            <p><strong>For you, Oybek:</strong> {cachedInfo.Relation}</p>
-            <p><strong>Gaplashgan:</strong> {cachedInfo.Talked || "Unknown"}</p>
+            {/* <p><strong>For you, Oybek:</strong> {cachedInfo.Relation}</p> */}
+            <p><strong>Gaplashgan:</strong> {cachedInfo.Talked}</p>
             <p>
-              <strong>Instagram:</strong>{" "}
+              <strong>Instagram:</strong>{""}
               {cachedInfo.Instagram && cachedInfo.Instagram !== "Unknown" ? (
                 <a
                   href={`https://instagram.com/${cachedInfo.Instagram}`}
@@ -47,7 +47,7 @@ function ProfileCard({ info, index, activeIndex, setActiveIndex }) {
                   {cachedInfo.Instagram}
                 </a>
               ) : (
-                "Unknown"
+                " Unknown"
               )}
             </p>
           </div>
