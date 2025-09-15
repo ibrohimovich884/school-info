@@ -11,7 +11,7 @@ function Login({ setIsLoggedIn }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (username === "Oybek" && password === "1234") {
+    if (username === "Oybek" && password === "0000") {
       setIsLoggedIn(true);
       navigate("/"); 
     } else {
