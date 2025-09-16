@@ -13,6 +13,8 @@ import BoysPage7a from "./pages/grade7a/Grade7aBoys.jsx";
 
 // Grade 7b
 import Grade7b from "./pages/grade7b/Grade7b.jsx"
+import GirlsPage7b from "./pages/grade7b/Grade7bGirls.jsx";
+import BoysPage7b from "./pages/grade7b/Grade7bBoys.jsx";
 
 //  Grade 8a
 import Grade8a from './pages/grade8a/Grade8a.jsx';
@@ -63,7 +65,10 @@ function App() {
             <Route path="boys" element={<BoysPage7a />} />
           </Route>
 
-          <Route path="grade/7b" element={<Grade7b />} />
+          <Route path="grade/7b" element={<Grade7b />}>
+            <Route path="girls" element={<GirlsPage7b />} />
+            <Route path="boys" element={<BoysPage7b />} />
+          </Route>
 
           <Route path="grade/8a" element={<Grade8a />}>
             <Route path="girls" element={<GirlsPage8a />} />
