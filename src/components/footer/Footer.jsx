@@ -7,7 +7,7 @@ function Footer() {
       <div className="footer-inner">
         {/* Brand */}
         <div className="footer-brand">
-          <h2 className="logo">MyApp</h2>
+          <a href="/home" className="logo">Back</a>
           <p className="tagline">Learning made simple</p>
         </div>
 

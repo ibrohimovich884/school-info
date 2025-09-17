@@ -2479,37 +2479,67 @@ export const schoolData = {
                 {
                     "Girls": [
                         {
-                            "Kumush": [
+                            "Durdona": [
                                 {
-                                    "Full name": "Baxtiyorova Kumush Doniyor qizi",
-                                    "Name": "Kumush",
+                                    "Full name": "Abdullayeva Durdona Abdumalik qizi",
+                                    "Name": "Durdona",
                                     "Image": "",
                                     "Gender": "Female",
-                                    "Birthday": "2011-11-07",
+                                    "Birthday": "2010-04-17",
                                     "Relation": "Stranger",
                                     "Grades": ["No grades available!"],
                                     "Instagram": "Unknown",
                                     "Talked": "Unknown"
                                 }
                             ]
-                        }
+                        },
+                        {
+                            "Durdona": [
+                                {
+                                    "Full name": "Durdona",
+                                    "Name": "Durdona",
+                                    "Image": "",
+                                    "Gender": "Female",
+                                    "Birthday": "2010-04-17",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
                     ],
                     "Boys": [
                         {
-                            "Asadbek": [
+                            "Ilyos": [
                                 {
-                                    "Full name": "Abdujabborov Asadbek Toxir o'g'li",
-                                    "Name": "Asadbek",
+                                    "Full name": "Abdullayev Ilyos Ilhomjon o`g`li",
+                                    "Name": "Ilyos",
                                     "Image": "",
                                     "Gender": "Male",
-                                    "Birthday": "2011-09-04",
+                                    "Birthday": "2010-03-28",
                                     "Relation": "Stranger",
                                     "Grades": ["No grades available!"],
                                     "Instagram": "Unknown",
                                     "Talked": "Unknown"
                                 }
                             ]
-                        }
+                        },
+                        {
+                            "Ilyos": [
+                                {
+                                    "Full name": "Ilyos",
+                                    "Name": "Ilyos",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2010-03-28",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
                     ]
                 }
             ]
