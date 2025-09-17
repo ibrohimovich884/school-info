@@ -37,7 +37,7 @@ function ProfileCard({ info, index, activeIndex, setActiveIndex }) {
             {/* <p><strong>For you, Oybek:</strong> {cachedInfo.Relation}</p> */}
             <p><strong>Gaplashgan:</strong> {cachedInfo.Talked}</p>
             <p>
-              <strong>Instagram:</strong>{""}
+              <strong>Instagram: </strong>{""}
               {cachedInfo.Instagram && cachedInfo.Instagram !== "Unknown" ? (
                 <a
                   href={`https://instagram.com/${cachedInfo.Instagram}`}

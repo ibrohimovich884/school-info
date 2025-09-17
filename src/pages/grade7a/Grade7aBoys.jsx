@@ -12,7 +12,7 @@ function GirlsPage7a() {
 
     return (
         <div className="grade">
-            <h1>{grade} – Girls 👧</h1>
+            <h1>{grade} – Boys 👦</h1>
             <div className="card-list">
                 {girls.map((girlObj, i) => {
                     const nameKey = Object.keys(girlObj)[0];

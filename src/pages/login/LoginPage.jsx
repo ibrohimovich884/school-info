@@ -1,23 +1,61 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import "./LoginPage.css";
 
 function Login({ setIsLoggedIn }) {
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+
+  const [isTimeAuto, setIsTimeAuto] = useState(
+    sessionStorage.getItem("timeAuto") === "true"
+  );
+
+  const isWithinWindow = () => {
+    const now = new Date();
+    const h = now.getHours();
+    const m = now.getMinutes();
+    return h === 13 && m >= 0 && m <= 3;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (isWithinWindow()) {
+      setIsLoggedIn(true);
+      setIsTimeAuto(true);
+      sessionStorage.setItem("timeAuto", "true");
+      navigate("/");
+      return;
+    }
+
     if (username === "Oybek" && password === "1234") {
       setIsLoggedIn(true);
-      navigate("/"); 
+      setIsTimeAuto(false);
+      sessionStorage.removeItem("timeAuto");
+      navigate("/");
     } else {
       setError("Login yoki parol noto‘g‘ri");
     }
   };
+
+  useEffect(() => {
+    if (!isTimeAuto) return;
+
+    const checkInterval = setInterval(() => {
+      if (!isWithinWindow()) {
+        setIsLoggedIn(false);
+        setIsTimeAuto(false);
+        sessionStorage.removeItem("timeAuto");
+        navigate("/login");
+        clearInterval(checkInterval);
+      }
+    }, 3000);
+
+    return () => clearInterval(checkInterval);
+  }, [isTimeAuto, navigate, setIsLoggedIn]);
 
   return (
     <div className="login-container">
