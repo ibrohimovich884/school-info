@@ -616,13 +616,208 @@ export const schoolData = {
                     ],
                     "Boys": [
                         {
+                            "Asliddin": [
+                                {
+                                    "Full name": "Absamatov Asliddin Aziz o`g`li",
+                                    "Name": "Asliddin",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2012-4-01",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Asilbek": [
+                                {
+                                    "Full name": "Ahmadjonov Asilbek Shovkat o`g`li",
+                                    "Name": "Asilbek",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2012-12-29",
+                                    "Relation": "My friend brother",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Otabek": [
+                                {
+                                    "Full name": "Almatov Otabek Ulugbekovich",
+                                    "Name": "Otabek",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2012-08-09",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Bekzod": [
+                                {
+                                    "Full name": "Baynazarov Bekzod Baxtiyor o`g`li",
+                                    "Name": "Bekzod",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2012-11-14",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Yoqubjon": [
+                                {
+                                    "Full name": "Dalabayev Yoqubjon Xasan o'g'li",
+                                    "Name": "Yoqubjon",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2012-01-11",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Husniddin": [
+                                {
+                                    "Full name": "Gafurov Husniddin Xayrulla oʻgʻli",
+                                    "Name": "Husniddin",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2012-11-13",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Rustambek": [
+                                {
+                                    "Full name": "Ibragimov Rustambek Abduraxim o`g`li",
+                                    "Name": "Rustambek",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2013-10-04",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Murodjon": [
+                                {
+                                    "Full name": "amolov Murodjon Djavlon oʻgʻli",
+                                    "Name": "Murodjon",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2012-03-27",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Otabek": [
+                                {
+                                    "Full name": "Nishonov Otabek Jahongir oʻgʻli",
+                                    "Name": "Otabek",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2012-09-11",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
                             "Asadbek": [
                                 {
-                                    "Full name": "Abdujabborov Asadbek Toxir o'g'li",
+                                    "Full name": "Abdujabboro",
                                     "Name": "Asadbek",
                                     "Image": "",
                                     "Gender": "Male",
-                                    "Birthday": "2011-09-04",
+                                    "Birthday": "2012-09-04",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Behruz": [
+                                {
+                                    "Full name": "Olimjonov Behruz Kahraman o'g'li",
+                                    "Name": "Behruz",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2012-08-12",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Asadbek": [
+                                {
+                                    "Full name": "Tuychibayev Asadbek Toxir o'g'li",
+                                    "Name": "Asadbek",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2012-05-29",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Shoxrux": [
+                                {
+                                    "Full name": "Usarov Shoxrux Rustam o'g'li",
+                                    "Name": "Shoxrux",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2012-07-18",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Yaxyobek": [
+                                {
+                                    "Full name": "Xakimov Yaxyobek Xurvay o'g'li",
+                                    "Name": "Yaxyo",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2012-09-04",
                                     "Relation": "Stranger",
                                     "Grades": ["No grades available!"],
                                     "Instagram": "Unknown",
