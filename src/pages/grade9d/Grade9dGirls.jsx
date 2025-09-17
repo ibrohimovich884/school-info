@@ -4,7 +4,7 @@ import ProfileCard from "../ProfileCard";
 import "../Grade.css";
 
 const schoolName = "40-maktab";
-const grade = "Grade-9b";
+const grade = "Grade-9d";
 const girls = schoolData[schoolName][0][grade][0]["Girls"];
 
 function GirlsPage9d() {

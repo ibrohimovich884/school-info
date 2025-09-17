@@ -2475,7 +2475,7 @@ export const schoolData = {
                     ]
                 }
             ],
-            "9d-sinf": [
+            "Grade-9d": [
                 {
                     "Girls": [
                         {
