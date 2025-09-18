@@ -9,6 +9,7 @@ const girls = schoolData[schoolName][0][grade][0]["Girls"];
 
 function GirlsPage9d() {
     const [activeIndex, setActiveIndex] = useState(null);
+console.log(girls);
 
     return (
         <div className="grade">

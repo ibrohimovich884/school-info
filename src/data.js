@@ -2494,13 +2494,148 @@ export const schoolData = {
                             ]
                         },
                         {
-                            "Durdona": [
+                            "Gulnoza": [
                                 {
-                                    "Full name": "Durdona",
-                                    "Name": "Durdona",
+                                    "Full name": "Almatova Gulnoza Ulug'bek qizi",
+                                    "Name": "Gulnoza",
+                                    "Image": "",
+                                    "Gender": "Female",
+                                    "Birthday": "2010-01-27",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                            {
+                            "Marjona": [
+                                {
+                                    "Full name": "Asonova Marjona Pulat qizi",
+                                    "Name": "Marjona",
                                     "Image": "",
                                     "Gender": "Female",
                                     "Birthday": "2010-04-17",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Zarina": [
+                                {
+                                    "Full name": "Batirova Zarina Kudrat qizi",
+                                    "Name": "Zarina",
+                                    "Image": "",
+                                    "Gender": "Female",
+                                    "Birthday": "2010-03-11",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Vasila": [
+                                {
+                                    "Full name": "Baxtiyorova Vasila Farxod qizi",
+                                    "Name": "Vasila",
+                                    "Image": "",
+                                    "Gender": "Female",
+                                    "Birthday": "2010-04-15",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Maxliyoxon": [
+                                {
+                                    "Full name": "G'ofurova Maxliyoxon G'ayratjon qizi",
+                                    "Name": "Maxliyo",
+                                    "Image": "",
+                                    "Gender": "Female",
+                                    "Birthday": "2010-01-31",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Aidaxon": [
+                                {
+                                    "Full name": "Saidaxmedova Aidaxon Saidakbar qizi",
+                                    "Name": "Aida",
+                                    "Image": "",
+                                    "Gender": "Female",
+                                    "Birthday": "2010-01-08",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Munira": [
+                                {
+                                    "Full name": "Turdaliyeva Munira Nurmat qizi",
+                                    "Name": "Munira",
+                                    "Image": "",
+                                    "Gender": "Female",
+                                    "Birthday": "2010-04-25",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Moxichexra": [
+                                {
+                                    "Full name": "Urayeva Moxichexra Alibek qizi",
+                                    "Name": "Moxi",
+                                    "Image": "",
+                                    "Gender": "Female",
+                                    "Birthday": "2010-04-02",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Durdona": [
+                                {
+                                    "Full name": "Usarova Durdona Murodjon qizi",
+                                    "Name": "Durdona",
+                                    "Image": "",
+                                    "Gender": "Female",
+                                    "Birthday": "2010-09-08",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Durdona": [
+                                {
+                                    "Full name": "Yuldashova Durdona Kamiljan qizi",
+                                    "Name": "Durdona",
+                                    "Image": "",
+                                    "Gender": "Female",
+                                    "Birthday": "2010-08-07",
                                     "Relation": "Stranger",
                                     "Grades": ["No grades available!"],
                                     "Instagram": "Unknown",
@@ -2526,13 +2661,178 @@ export const schoolData = {
                             ]
                         },
                         {
-                            "Ilyos": [
+                            "Kamronbek": [
                                 {
-                                    "Full name": "Ilyos",
-                                    "Name": "Ilyos",
+                                    "Full name": "Botirjonov Kamronbek Sherzod o'g'li",
+                                    "Name": "Kamronbek",
                                     "Image": "",
                                     "Gender": "Male",
-                                    "Birthday": "2010-03-28",
+                                    "Birthday": "2010-06-06",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "G'iyosiddin": [
+                                {
+                                    "Full name": "Giyazitdinov G'iyosiddin Abdulaziz o'g'li",
+                                    "Name": "G'iyosiddin",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2010-04-27",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Behruz": [
+                                {
+                                    "Full name": "Karimjonov Behruz Arib o’g’li",
+                                    "Name": "Behruz",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2010-06-20",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Mo`minjon": [
+                                {
+                                    "Full name": "Madaminov Mo`minjon Akmal o`g`li",
+                                    "Name": "Mo`minjon",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2010-08-15",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Sardorbek": [
+                                {
+                                    "Full name": "Muratov Sardorbek Doniyor o’g’li",
+                                    "Name": "Sardor",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2010-03-01",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Sarvarbek": [
+                                {
+                                    "Full name": "Muratov Sarvarbek Xusan o`g`li",
+                                    "Name": "Sarvarbek",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2010-12-20",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Meyrbek": [
+                                {
+                                    "Full name": "Musayev Meyrbek Azizbek o`gli",
+                                    "Name": "Meyrbek",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2010-05-10",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Eldorbek": [
+                                {
+                                    "Full name": "Muzaffarov Eldorbek Elmurod o'g'li",
+                                    "Name": "Eldorbek",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2010-03-04",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Mohirjon": [
+                                {
+                                    "Full name": "Nig`matjonov Mohirjon Qobil o`g`li",
+                                    "Name": "Mohir",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2010-08-13",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Zikrillo": [
+                                {
+                                    "Full name": "Tug’ilov Zikrillo Abduqahhor o’g’li",
+                                    "Name": "Zikrillo",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2010-07-24",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Kamronbek": [
+                                {
+                                    "Full name": "Tursunov Kamronbek Ali ogli",
+                                    "Name": "Kamronbek",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2010-07-15",
+                                    "Relation": "Stranger",
+                                    "Grades": ["No grades available!"],
+                                    "Instagram": "Unknown",
+                                    "Talked": "Unknown"
+                                }
+                            ]
+                        },
+                        {
+                            "Faridjon": [
+                                {
+                                    "Full name": "Usmonov Faridjon Farrux o`g`li",
+                                    "Name": "Faridjon",
+                                    "Image": "",
+                                    "Gender": "Male",
+                                    "Birthday": "2010-12-19",
                                     "Relation": "Stranger",
                                     "Grades": ["No grades available!"],
                                     "Instagram": "Unknown",

@@ -8,7 +8,6 @@ function Grade9d() {
   return (
     <div className="grade8a-container">
       <h1>{grade}</h1>
-      <h2>Hozircha malumotlar yo'q</h2>
       <nav>
         <Link to="girls">Girls 👧</Link>
         <Link to="boys">Boys 👦</Link>

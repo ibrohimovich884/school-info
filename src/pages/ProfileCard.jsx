@@ -6,15 +6,15 @@ function ProfileCard({ info, index, activeIndex, setActiveIndex }) {
   const [cachedInfo, setCachedInfo] = useState(info);
 
   useEffect(() => {
-    const cacheKey = `profile-${info.Name}`;
+    const cacheKey = `profile-${info.Name}-${info.Birthday}`;
 
-    // Avval localStorage'dan ma'lumotni o‘qiymiz
-    const cachedData = localStorage.getItem(cacheKey);
+    // Avval sessionStorage'dan ma'lumotni o‘qiymiz
+    const cachedData = sessionStorage.getItem(cacheKey);
     if (cachedData) {
       setCachedInfo(JSON.parse(cachedData));
     } else {
       // Agar yo‘q bo‘lsa, saqlab qo‘yamiz
-      localStorage.setItem(cacheKey, JSON.stringify(info));
+      sessionStorage.setItem(cacheKey, JSON.stringify(info));
     }
   }, [info]);
 
@@ -34,10 +34,9 @@ function ProfileCard({ info, index, activeIndex, setActiveIndex }) {
           <div className="details">
             <p><strong>Full name:</strong> {cachedInfo["Full name"]}</p>
             <p><strong>Birthday:</strong> {cachedInfo.Birthday}</p>
-            {/* <p><strong>For you, Oybek:</strong> {cachedInfo.Relation}</p> */}
             <p><strong>Gaplashgan:</strong> {cachedInfo.Talked}</p>
             <p>
-              <strong>Instagram: </strong>{""}
+              <strong>Instagram: </strong>
               {cachedInfo.Instagram && cachedInfo.Instagram !== "Unknown" ? (
                 <a
                   href={`https://instagram.com/${cachedInfo.Instagram}`}

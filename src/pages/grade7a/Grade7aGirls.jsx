@@ -6,7 +6,6 @@ import "../Grade.css";
 const schoolName = "40-maktab";
 const grade = "Grade-7a";
 const girls = schoolData[schoolName][0][grade][0]["Girls"];
-console.log(girls);
 
 function GirlsPage7a() {
     const [activeIndex, setActiveIndex] = useState(null);
