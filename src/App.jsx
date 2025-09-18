@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, lazy } from "react";
 import { Routes, Route, Navigate } from "react-router";
 
-import Home from './pages/home/Home.jsx';
-import About from './pages/about/About.jsx';
-import Contact from './pages/contact/Contact.jsx';
-import RootLayout from './layout/RootLayout.jsx';
+// import Home from './pages/home/Home.jsx';
+const About = lazy(() => import('./pages/about/About.jsx'));
+// import About from './pages/about/About.jsx';
+const Contact = lazy(() => import('./pages/contact/Contact.jsx'));
+// import Contact from './pages/contact/Contact.jsx';
+const RootLayout = lazy(() => import('./layout/RootLayout.jsx'));
+// import RootLayout from './layout/RootLayout.jsx';
 
 // Grade 7a
 import Grade7a from "./pages/grade7a/Grade7a.jsx";
