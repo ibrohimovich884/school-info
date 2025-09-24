@@ -17,7 +17,7 @@ function Login({ setIsLoggedIn }) {
     const now = new Date();
     const h = now.getHours();
     const m = now.getMinutes();
-    return h === 13 && m >= 0 && m <= 3;
+    return h === 13 && m >= 0 && m <= 1;
   };
 
   const handleSubmit = (e) => {
@@ -31,7 +31,7 @@ function Login({ setIsLoggedIn }) {
       return;
     }
 
-    if (username === "Oybek" && password === "1234") {
+    if (username === "Oybek" && password === "1234qwer") {
       setIsLoggedIn(true);
       setIsTimeAuto(false);
       sessionStorage.removeItem("timeAuto");

@@ -1,6 +1,7 @@
 
 export const schoolData = {
     "40-maktab": [
+        
         {
             "Grade-7a": [
                 {
@@ -2116,7 +2117,7 @@ export const schoolData = {
                         {
                             "Shodiyona": [
                                 {
-                                    "Full name": "Mingqobulova Shodiyona ... qizi",
+                                    "Full name": "Mingqobulova Shodiyona Asqar qizi",
                                     "Name": "Shodiyona",
                                     "Image": "",
                                     "Gender": "Female",
