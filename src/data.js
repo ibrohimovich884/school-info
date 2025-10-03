@@ -887,7 +887,7 @@ export const schoolData = {
                                     "Birthday": "2011-11-18",
                                     "Relation": "Secreted!",
                                     "Grades": ["No grades available!"],
-                                    "Instagram": "Unknown",
+                                    "Instagram": "nafise.off.1",
                                     "Talked": "Unknown"
                                 }
                             ]
@@ -992,7 +992,7 @@ export const schoolData = {
                                     "Birthday": "2011-06-07",
                                     "Relation": "Stranger",
                                     "Grades": ["No grades available!"],
-                                    "Instagram": "Unknown",
+                                    "Instagram": "khamidovamohira",
                                     "Talked": "Unknown"
                                 }
                             ]
@@ -1007,7 +1007,7 @@ export const schoolData = {
                                     "Birthday": "2011-03-16",
                                     "Relation": "Stranger",
                                     "Grades": ["No grades available!"],
-                                    "Instagram": "Unknown",
+                                    "Instagram": "__nig1na12__",
                                     "Talked": "Unknown"
                                 }
                             ]
