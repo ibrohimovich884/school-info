@@ -922,6 +922,17 @@ export const schoolData = {
                                 }
                             ]
                         },
+                        //              Shablone
+                        //         {
+                        //             "Full name": "Oribjonova Go'zal Kamiljan qizi",
+                        //             "Name": "Go'zal",
+                        //             "Grade": "8a",
+                        //             "Image": "",
+                        //             "Gender": "Female",
+                        //             "Birthday": "2011-04-02",
+                        //             "Instagram": "_gozal_m_011_",
+                        //             "Talked": "Murod, ..."
+                        //         },
                         {
                             "Shaxina": [
                                 {
@@ -2074,7 +2085,6 @@ export const schoolData = {
                             ]
                         }
                     ]
-
                 }
             ],
             "Grade-9b": [
