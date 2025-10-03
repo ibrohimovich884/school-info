@@ -1022,7 +1022,7 @@ export const schoolData = {
                                     "Birthday": "2011-08-30",
                                     "Relation": "Stranger",
                                     "Grades": ["No grades available!"],
-                                    "Instagram": "...",
+                                    "Instagram": "akmalovvnaes",
                                     "Talked": "Kamron"
                                 }
                             ]
@@ -1276,7 +1276,7 @@ export const schoolData = {
                                     "Grades": [
                                         "No grades available!"
                                     ],
-                                    "Instagram": "Unknown",
+                                    "Instagram": "_og1loy_o11_",
                                     "Talked": "Unknown"
                                 }
                             ]
