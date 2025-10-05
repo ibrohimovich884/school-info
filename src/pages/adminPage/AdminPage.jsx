@@ -5,7 +5,7 @@ function AdminPage() {
   const [logs, setLogs] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/logs")
+    fetch("https://four0-mak-server-3.onrender.com/logs")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
