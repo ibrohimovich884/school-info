@@ -114,7 +114,7 @@ function Login({ setIsLoggedIn }) {
         connectedAt: new Date().toISOString()
       };
 
-      await fetch("http://localhost:5000/logs/device", {
+      await fetch("http://localhost:5000/logs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(deviceInfo)
