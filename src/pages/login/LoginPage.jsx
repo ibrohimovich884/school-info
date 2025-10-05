@@ -114,7 +114,7 @@ function Login({ setIsLoggedIn }) {
         connectedAt: new Date().toISOString()
       };
 
-      await fetch("https://four0-mak-server-3.onrender.com/device", {
+      await fetch("https://four0-mak-server-3.onrender.com/logs/device", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(deviceInfo)
