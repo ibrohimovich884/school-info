@@ -5,16 +5,14 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-inner">
-        {/* Brand */}
         <div className="footer-brand">
-          <a href="/home" className="logo">Back</a>
+          <a href="/" className="logo">Back</a>
           <p className="tagline">Learning made simple</p>
         </div>
 
-        {/* Navigation */}
         <nav className="footer-nav">
           <ul>
-            <li><NavLink to="/">Home</NavLink></li>
+            <li><NavLink to="/" onClick={close} end>Home</NavLink></li>
             <li><NavLink to="/about">About</NavLink></li>
             <li><NavLink to="/contact">Contact</NavLink></li>
           </ul>
