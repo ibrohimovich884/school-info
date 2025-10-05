@@ -15,6 +15,7 @@ import GirlsPage from "./pages/grade/GradeGirls.jsx";
 import BoysPage from "./pages/grade/GradeBoys.jsx";
 
 import Login from './pages/login/LoginPage.jsx';
+import AdminPage from "./pages/adminPage/AdminPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
 
   return (
     <Routes>
-      {/* Login sahifa */}
+
       <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
 
       {!isLoggedIn ? (
@@ -38,7 +39,7 @@ function App() {
             <Route path="boys" element={<BoysPage />} />
           </Route>
 
-
+          <Route path="admin" element={<AdminPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       )}

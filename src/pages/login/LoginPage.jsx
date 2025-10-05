@@ -51,6 +51,7 @@ function Login({ setIsLoggedIn }) {
   }, []);
 
   // Asosiy login funksiyasi
+  // Asosiy login funksiyasi
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -64,27 +65,40 @@ function Login({ setIsLoggedIn }) {
       return;
     }
 
+    // ADMIN tekshiruvi
+    if (username === "Admin" && password === "0ybek123") {
+      setIsLoggedIn(true);
+      localStorage.removeItem("blockedUntil");
+      setAttempts(0);
+      navigate("/admin");
+      return;
+    }
+
+    // Oddiy foydalanuvchi
     if (username === "Oybek" && password === "1234qwert") {
       setIsLoggedIn(true);
       localStorage.removeItem("blockedUntil");
       setAttempts(0);
       navigate("/");
-    } else {
-      const newAttempts = attempts + 1;
-      setAttempts(newAttempts);
+      return;
+    }
 
-      if (newAttempts >= 3) {
-        const blockTime = Date.now() + 60 * 1000;
-        localStorage.setItem("blockedUntil", blockTime);
-        setTimeLeft(60);
-        setError("Siz 3 marta xato kiritdingiz. 1 daqiqa kuting.");
-      } else {
-        setError(
-          `Login yoki parol noto‘g‘ri. Qolgan urinishlar: ${3 - newAttempts}`
-        );
-      }
+    // Login noto‘g‘ri bo‘lsa
+    const newAttempts = attempts + 1;
+    setAttempts(newAttempts);
+
+    if (newAttempts >= 3) {
+      const blockTime = Date.now() + 60 * 1000;
+      localStorage.setItem("blockedUntil", blockTime);
+      setTimeLeft(60);
+      setError("Siz 3 marta xato kiritdingiz. 1 daqiqa kuting.");
+    } else {
+      setError(
+        `Login yoki parol noto‘g‘ri. Qolgan urinishlar: ${3 - newAttempts}`
+      );
     }
   };
+
 
   // Bonus kirish tugmasi
   const handleBonusClick = async () => {
