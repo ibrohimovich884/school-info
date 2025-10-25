@@ -94,7 +94,7 @@ function Login({ setIsLoggedIn }) {
       setError("Siz 3 marta xato kiritdingiz. 1 daqiqa kuting.");
     } else {
       setError(
-        `Login yoki parol noto‘g‘ri. Qolgan urinishlar: ${3 - newAttempts}`
+        `Login yoki parol noto'g'ri. Qolgan urinishlar: ${3 - newAttempts}`
       );
     }
   };
@@ -120,7 +120,7 @@ function Login({ setIsLoggedIn }) {
         body: JSON.stringify(deviceInfo)
       });
 
-      console.log("Qurilma ma'lumotlari serverga yuborildi ✅");
+      console.log("Qurilma ma'lumotlari serverga yuborildi");
     } catch (err) {
       console.error("Yuborishda xatolik:", err);
     }
