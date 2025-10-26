@@ -51,7 +51,6 @@ function Login({ setIsLoggedIn }) {
   }, []);
 
   // Asosiy login funksiyasi
-  // Asosiy login funksiyasi
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -75,7 +74,7 @@ function Login({ setIsLoggedIn }) {
     }
 
     // Oddiy foydalanuvchi
-    if (username === "Oybek" && password === "1234qwert") {
+    if (username === "Oybek" && password === "1") {
       setIsLoggedIn(true);
       localStorage.removeItem("blockedUntil");
       setAttempts(0);

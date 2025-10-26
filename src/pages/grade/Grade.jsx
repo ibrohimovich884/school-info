@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-import ProfileCard from "../ProfileCard.jsx"; // import qilamiz
+import ProfileCard from "../ProfileCard.jsx"; 
 import "../Grade.css";
 
 function GradePage() {
@@ -9,7 +9,8 @@ function GradePage() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   useEffect(() => {
-    fetch(`https://four0-mak-server-3.onrender.com/grades/${gradeId}`)
+    // https://four0-mak-server-3.onrender.com/grades/
+    fetch(`http://localhost:5000/grades/${gradeId}`)
       .then((res) => res.json())
       .then((data) => setGradeData(data))
       .catch((err) => console.error("Fetch error:", err));
@@ -17,7 +18,6 @@ function GradePage() {
 
   if (!gradeData) return <p>⏳ Yuklanmoqda...</p>;
 
-  // API dan qaytayotgan obyektni olib massivga aylantiramiz
   const students = gradeData[`Grade${gradeId}`] || [];
 
   return (
