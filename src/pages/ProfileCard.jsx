@@ -51,7 +51,7 @@ function ProfileCard({ info, index, activeIndex, setActiveIndex }) {
           </div>
         ) : (
           <>
-            <p className="hint">Batafsil ko‘rish uchun bos 👆</p>
+            <p className="hint">Batafsil ko'rish uchun bos 👆</p>
           </>
         )}
       </div>
