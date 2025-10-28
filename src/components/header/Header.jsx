@@ -12,7 +12,7 @@ function Header() {
     <header className="header">
       <div className="header-inner">
         <div className="brand" onClick={close} role="button" tabIndex={0}>
-          <a href="" className="logo">MyApp</a>
+          <a href="" className="logo">School info</a>
           <span className="tagline">Bilim. Ijod. Jamiyat.</span>
         </div>
 

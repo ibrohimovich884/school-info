@@ -17,7 +17,7 @@ function ProfileCard({ info, index, activeIndex, setActiveIndex }) {
       sessionStorage.setItem(cacheKey, JSON.stringify(info));
     }
   }, [info]);
-console.log(cachedInfo.Image);
+  console.log(cachedInfo.Image);
 
   return (
     <div
@@ -50,7 +50,9 @@ console.log(cachedInfo.Image);
             </p>
           </div>
         ) : (
-          <p className="hint">Batafsil ko‘rish uchun bos 👆</p>
+          <>
+            <p className="hint">Batafsil ko‘rish uchun bos 👆</p>
+          </>
         )}
       </div>
     </div>

@@ -18,9 +18,9 @@ export default defineConfig({
 // eslintPlugin(),
 		VitePWA({
 			manifest: {
-				name: "My awesome PWA",
-				short_name: "PWA",
-				description: "A description of my PWA",
+				name: "School info",
+				short_name: "School info",
+				description: "School students information app",
 				start_url: "/",
 				display: "standalone",
 				background_color: "#000000",
