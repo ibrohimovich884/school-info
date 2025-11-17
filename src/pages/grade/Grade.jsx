@@ -9,7 +9,7 @@ function GradePage() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   useEffect(() => {
-    // http://localhost:5000/grades/ 
+    //  http://localhost:5000/grades/
     fetch(`https://four0-mak-server-3.onrender.com/grades/${gradeId}`)
       .then((res) => res.json())
       .then((data) => setGradeData(data))
