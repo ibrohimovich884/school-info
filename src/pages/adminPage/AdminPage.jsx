@@ -23,8 +23,15 @@ function AdminPage() {
 					className="hide"
 					onClick={() => {
 						fetch("https://four0-mak-server-3.onrender.com/hideData/hide", {
-							method: "POST"
-						});
+							method: "POST",
+							headers: {
+								"Content-Type": "application/json"
+							},
+							body: JSON.stringify({ students_data: false })
+						})
+							.then(res => res.json())
+							.then(data => console.log("Berkitildi:", data))
+							.catch(err => console.error("Xatolik:", err));
 					}}
 				>
 					Ma'lumotlar berkitish
@@ -33,13 +40,21 @@ function AdminPage() {
 				<button
 					className="show"
 					onClick={() => {
-						fetch("https://four0-mak-server-3.onrender.com/hideData/show", {
-							method: "POST"
-						});
+						fetch("https://four0-mak-server-3.onrender.com/hideData/hide", {
+							method: "POST",
+							headers: {
+								"Content-Type": "application/json"
+							},
+							body: JSON.stringify({ students_data: true })
+						})
+							.then(res => res.json())
+							.then(data => console.log("Ochildi:", data))
+							.catch(err => console.error("Xatolik:", err));
 					}}
 				>
 					Ma'lumotlar ko'rish
 				</button>
+
 
 				<h1>Qurilmalar ro‘yxati</h1>
 				<p>Sizning tizimingizga ulangan barcha qurilmalar ro‘yxati</p>

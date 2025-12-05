@@ -1,5 +1,7 @@
 
-function ProfileCard({ info, index, activeIndex, setActiveIndex, dataAllowed }) {
+function ProfileCard({ info, index, activeIndex, setActiveIndex }) {
+
+
 
 	if (!dataAllowed) {
 		return (
