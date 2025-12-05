@@ -74,7 +74,7 @@ function Login({ setIsLoggedIn }) {
     }
 
     // Oddiy foydalanuvchi
-    if (username === "Oybek" && password === "1") {
+    if (username === "Oybek" && password === "1234qwert") {
       setIsLoggedIn(true);
       localStorage.removeItem("blockedUntil");
       setAttempts(0);
