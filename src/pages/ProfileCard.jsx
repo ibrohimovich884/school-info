@@ -1,15 +1,7 @@
+import { useEffect, useState } from "react";
+import "./Grade.css";
 
-function ProfileCard({ info, index, activeIndex, setActiveIndex }) {
-
-
-
-	if (!dataAllowed) {
-		return (
-			<div className="empty-card">
-				Ma’lumot yo‘q!
-			</div>
-		);
-	}
+function ProfileCard({ info, index, activeIndex, setActiveIndex, dataAllowed }) {
 
 	const isActive = activeIndex === index;
 	const [cachedInfo, setCachedInfo] = useState(() => info);
@@ -24,6 +16,15 @@ function ProfileCard({ info, index, activeIndex, setActiveIndex }) {
 			sessionStorage.setItem(cacheKey, JSON.stringify(info));
 		}
 	}, [info.Name, info.Birthday]);
+
+	if (!dataAllowed) {
+		return (
+			<div className="profile-card locked">
+				<img src="/students/default.jpg" alt="Error!" />
+				<p>Ma’lumot topilmadi!</p>
+			</div>
+		);
+	}
 
 	return (
 		<div
@@ -44,7 +45,7 @@ function ProfileCard({ info, index, activeIndex, setActiveIndex }) {
 						<p><strong>Birthday:</strong> {cachedInfo.Birthday}</p>
 						<p><strong>Gaplashgan:</strong> {cachedInfo.Talked}</p>
 						<p>
-							<strong>Instagram: </strong>
+							<strong>Instagram:</strong>{" "}
 							{cachedInfo.Instagram && cachedInfo.Instagram !== "Unknown" ? (
 								<a
 									href={`https://instagram.com/${cachedInfo.Instagram}`}
