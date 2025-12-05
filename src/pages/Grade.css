@@ -159,47 +159,51 @@
 }
 
 @media (max-width: 480px) {
-  .grade {
-    padding: 12px;
-    margin: 10px auto;
-  }
+    .grade {
+        padding: 12px;
+        margin: 10px auto;
+    }
 
-  .grade h1 {
-    font-size: 24px; /* sarlavha ko‘rinadigan bo‘lsin */
-  }
+    .grade h1 {
+        font-size: 24px;
+        /* sarlavha ko‘rinadigan bo‘lsin */
+    }
 
-  .grade h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
-  }
+    .grade h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
 
-  .card-list {
-    grid-template-columns: 1fr;
-    gap: 16px; /* kartalar orasida biroz joy */
-  }
+    .card-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        /* kartalar orasida biroz joy */
+    }
 
-  .profile-card {
-    padding: 16px;
-  }
+    .profile-card {
+        padding: 16px;
+    }
 
-  .profile-card img {
-    width: 90px;
-    height: 90px;
-  }
+    .profile-card img {
+        width: 90px;
+        height: 90px;
+    }
 
-  .profile-info h2 {
-    font-size: 18px; /* ism kattaroq */
-  }
+    .profile-info h2 {
+        font-size: 18px;
+        /* ism kattaroq */
+    }
 
-  .profile-info .details p {
-    font-size: 15px; /* ma’lumotlar aniqroq ko‘rinadi */
-    line-height: 1.4;
-  }
+    .profile-info .details p {
+        font-size: 15px;
+        /* ma’lumotlar aniqroq ko‘rinadi */
+        line-height: 1.4;
+    }
 
-  .profile-info .hint {
-    font-size: 14px;
-    font-style: italic;
-  }
+    .profile-info .hint {
+        font-size: 14px;
+        font-style: italic;
+    }
 }
 
 
@@ -266,4 +270,17 @@
         display: block;
         width: 100%;
     }
+}
+
+.empty-card {
+    width: 200px;
+    height: 250px;
+    background: #f2f2f2;
+    border: 2px dashed #bbb;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: #555;
 }
