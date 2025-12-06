@@ -12,9 +12,21 @@ function Login({ setIsLoggedIn }) {
   const [showPassword, setShowPassword] = useState(false);
   const [timeLeft, setTimeLeft] = useState(0);
   const [bonusClicks, setBonusClicks] = useState(0);
-  const [clickedRequired, setClickedRequired] = useState(9999);
+  const [clickedRequired, setClickedRequired] = useState(999);
+  const [serverData, setServerData] = useState(null);
+
 
   // Bloklangan vaqtni tekshirish
+   useEffect(() => {
+    fetch("http://localhost:5000/updatePass")
+      .then(res => res.json())
+      .then(data => {
+        setServerData(data);
+      })
+      .catch(err => console.log("Login maʼlumot olinmadi:", err));
+  }, []);
+
+  // BLOK vaqtini tekshirish
   useEffect(() => {
     const storedTime = localStorage.getItem("blockedUntil");
     if (storedTime) {
@@ -24,11 +36,10 @@ function Login({ setIsLoggedIn }) {
     }
   }, []);
 
-  // Sekund hisoblagich
   useEffect(() => {
     if (timeLeft <= 0) return;
     const timer = setInterval(() => {
-      setTimeLeft((prev) => {
+      setTimeLeft(prev => {
         if (prev <= 1) {
           localStorage.removeItem("blockedUntil");
           clearInterval(timer);
@@ -40,19 +51,14 @@ function Login({ setIsLoggedIn }) {
     return () => clearInterval(timer);
   }, [timeLeft]);
 
-  // Serverdan required sonni olish
-  useEffect(() => {
-    fetch("https://four0-mak-server-3.onrender.com/clicker")
-      .then((res) => res.json())
-      .then((data) => {
-        if (typeof data.required === "number") setClickedRequired(data.required);
-      })
-      .catch(() => console.log("Serverdan ma'lumot olinmadi"));
-  }, []);
-
-  // Asosiy login funksiyasi
+  // LOGIN SUBMIT
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!serverData) {
+      setError("Serverdan ma’lumot olinmadi!");
+      return;
+    }
 
     if (timeLeft > 0) {
       setError(`Siz ${timeLeft} soniya kutishingiz kerak.`);
@@ -64,25 +70,23 @@ function Login({ setIsLoggedIn }) {
       return;
     }
 
-    // ADMIN tekshiruvi
-    if (username === "Admin" && password === "0ybek123") {
+    const { adminname, adminpassword, username: userU, password: userP } = serverData;
+
+    // ADMIN tekshiruv
+    if (username === adminname && password === adminpassword) {
       setIsLoggedIn(true);
-      localStorage.removeItem("blockedUntil");
-      setAttempts(0);
       navigate("/admin");
       return;
     }
 
-    // Oddiy foydalanuvchi
-    if (username === "Oybek" && password === "1234qwert") {
+    // ODDIY USER tekshiruv
+    if (username === userU && password === userP) {
       setIsLoggedIn(true);
-      localStorage.removeItem("blockedUntil");
-      setAttempts(0);
       navigate("/");
       return;
     }
 
-    // Login noto‘g‘ri bo‘lsa
+    // NOTO‘G'RI LOGIN
     const newAttempts = attempts + 1;
     setAttempts(newAttempts);
 
@@ -90,11 +94,9 @@ function Login({ setIsLoggedIn }) {
       const blockTime = Date.now() + 60 * 1000;
       localStorage.setItem("blockedUntil", blockTime);
       setTimeLeft(60);
-      setError("Siz 3 marta xato kiritdingiz. 1 daqiqa kuting.");
+      setError("3 marta xato! 1 daqiqa kuting.");
     } else {
-      setError(
-        `Login yoki parol noto'g'ri. Qolgan urinishlar: ${3 - newAttempts}`
-      );
+      setError(`Noto‘g‘ri. Qolgan urinishlar: ${3 - newAttempts}`);
     }
   };
 
