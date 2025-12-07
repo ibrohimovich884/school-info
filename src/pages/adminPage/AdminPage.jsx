@@ -3,7 +3,14 @@ import "./AdminPage.css";
 
 function AdminPage() {
 	const [logs, setLogs] = useState([]);
+	const [form, setForm] = useState({
+		username: "",
+		password: "",
+		adminname: "",
+		adminpassword: ""
+	});
 
+	// Loglarni olish
 	useEffect(() => {
 		fetch("https://four0-mak-server-3.onrender.com/logs")
 			.then((res) => res.json())
@@ -15,10 +22,54 @@ function AdminPage() {
 			.catch((err) => console.error("Xatolik:", err));
 	}, []);
 
+	// Inputlarni boshqarish
+	const handleChange = (e) => {
+		setForm({
+			...form,
+			[e.target.name]: e.target.value
+		});
+	};
+
+	// Parol yangilash
+	const updatePassword = () => {
+		// bo‘sh bo‘lmagan fieldlarni ajratib olish
+		const filteredForm = Object.fromEntries(
+			Object.entries(form).filter(([_, value]) => value.trim() !== "")
+		);
+
+		// agar hammasi bo‘sh bo‘lsa
+		if (Object.keys(filteredForm).length === 0) {
+			alert("Hech bo‘lmaganda bitta maydonni to‘ldiring!");
+			return;
+		}
+
+		fetch("http://localhost:5000/updatePass", {
+			method: "PATCH",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(filteredForm)
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log("Yangilandi:", data);
+				alert("Ma'lumotlar yangilandi!");
+				// xohlasang formani tozalash
+				setForm({
+					username: "",
+					password: "",
+					adminname: "",
+					adminpassword: ""
+				});
+			})
+			.catch((err) => console.error("Xatolik:", err));
+	};
+
 
 	return (
 		<div className="admin-container">
 			<div className="admin-card">
+
 				<button
 					className="hide"
 					onClick={() => {
@@ -34,9 +85,10 @@ function AdminPage() {
 							.catch(err => console.error("Xatolik:", err));
 					}}
 				>
-					Ma'lumotlar berkitish
+					Ma'lumotlarni berkitish
 				</button>
 
+				{/* Ma’lumotlarni ochish */}
 				<button
 					className="show"
 					onClick={() => {
@@ -52,43 +104,45 @@ function AdminPage() {
 							.catch(err => console.error("Xatolik:", err));
 					}}
 				>
-					Ma'lumotlar ko'rish
+					Ma'lumotlarni ko'rish
 				</button>
+				<div className="cards">
+					<input
+						type="text"
+						name="username"
+						placeholder="Username"
+						value={form.username}
+						onChange={handleChange}
+					/>
 
+					<input
+						type="text"
+						name="password"
+						placeholder="Password"
+						value={form.password}
+						onChange={handleChange}
+					/>
 
-				<h1>Qurilmalar ro‘yxati</h1>
-				<p>Sizning tizimingizga ulangan barcha qurilmalar ro‘yxati</p>
+					<input
+						type="text"
+						name="adminname"
+						placeholder="Adminname"
+						value={form.adminname}
+						onChange={handleChange}
+					/>
 
-				<div className="table-wrapper">
-					<table className="admin-table">
-						<thead>
-							<tr>
-								<th>IP</th>
-								<th>Model</th>
-								<th>Rasm</th>
-								<th>Ulangan vaqt</th>
-								<th>Hisob</th>
-							</tr>
-						</thead>
-						<tbody>
-							{logs.map((log, i) => (
-								<tr key={i}>
-									<td>{log.ip}</td>
-									<td>{log.model}</td>
-									<td>
-										<img
-											src={log.image}
-											alt={log.model}
-											className="device-img"
-										/>
-									</td>
-									<td>{new Date(log.connectedAt).toLocaleString()}</td>
-									<td>{log.count}</td>
-								</tr>
-							))}
-						</tbody>
-					</table>
+					<input
+						type="text"
+						name="adminpassword"
+						placeholder="Admin password"
+						value={form.adminpassword}
+						onChange={handleChange}
+					/>
+					<button className="update-btn" onClick={updatePassword}>
+						Ma'lumotlarni yangilash
+					</button>
 				</div>
+
 			</div>
 		</div>
 	);
