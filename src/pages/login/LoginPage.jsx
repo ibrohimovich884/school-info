@@ -18,7 +18,7 @@ function Login({ setIsLoggedIn }) {
 
   // Bloklangan vaqtni tekshirish
    useEffect(() => {
-    fetch("http://localhost:5000/updatePass")
+    fetch("https://four0-mak-server-3.onrender.com/updatePass")
       .then(res => res.json())
       .then(data => {
         setServerData(data);
