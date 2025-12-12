@@ -44,6 +44,7 @@ function ProfileCard({ info, index, activeIndex, setActiveIndex, dataAllowed }) 
 						<p><strong>Full name:</strong> {cachedInfo["Full name"]}</p>
 						<p><strong>Birthday:</strong> {cachedInfo.Birthday}</p>
 						<p><strong>Gaplashgan:</strong> {cachedInfo.Talked}</p>
+						<p><strong>Yangilanish:</strong> {cachedInfo.updateTime}</p>
 						<p>
 							<strong>Instagram:</strong>{" "}
 							{cachedInfo.Instagram && cachedInfo.Instagram !== "Unknown" ? (

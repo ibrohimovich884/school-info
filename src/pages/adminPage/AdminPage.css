@@ -1,123 +1,125 @@
-/* Umumiy container */
+/* === ASOSIY KONTEYNER === */
 .admin-container {
-  min-height: 100vh;
-  background: #f8fafc;
-  font-family: "Segoe UI", Arial, sans-serif;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+	min-height: 100vh;
+	background: #f8fafc;
+	padding: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	font-family: "Segoe UI", Arial, sans-serif;
 }
 
-/* Header */
-.admin-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #fff;
-  padding: 18px 24px;
-  border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  flex-wrap: wrap;
-}
-
-.admin-header h1 {
-  font-size: 22px;
-  font-weight: 700;
-  color: #1e293b;
-}
-
-.logout-btn {
-  background: linear-gradient(135deg, #fde68a, #facc15);
-  border: none;
-  padding: 10px 18px;
-  border-radius: 10px;
-  font-weight: 600;
-  color: #0f172a;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.logout-btn:hover {
-  background: linear-gradient(135deg, #fbbf24, #f59e0b);
-  box-shadow: 0 5px 12px rgba(245, 158, 11, 0.4);
-  transform: translateY(-2px);
-}
-
-/* Admin kartasi */
+/* === ADMIN CARD === */
 .admin-card {
-  background: #fff;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
+	width: 100%;
+	max-width: 480px;
+	background: #ffffff;
+	padding: 30px;
+	border-radius: 18px;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
+	transition: 0.25s ease;
 }
 
 .admin-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
 }
 
-.admin-subtitle {
-  color: #64748b;
-  font-size: 15px;
-  margin-bottom: 20px;
-  text-align: center;
+/* === TUGMALAR KONTEYNERI (yonma-yon) === */
+.top-buttons {
+	display: flex;
+	gap: 12px;
 }
 
-/* RESPONSIVE STYLES */
-@media (max-width: 900px) {
-  .admin-card {
-    padding: 20px;
-  }
-
-  .admin-table {
-    min-width: 500px;
-  }
-
-  .logout-btn {
-    margin-top: 10px;
-  }
+.top-buttons button {
+	flex: 1;
 }
 
+/* === TUGMALAR === */
+button {
+	border: none;
+	cursor: pointer;
+	padding: 12px;
+	font-size: 15px;
+	border-radius: 10px;
+	font-weight: 600;
+	transition: 0.25s ease;
+}
+
+/* BERKITISH */
+.hide, .show {
+	background: linear-gradient(135deg, #fde68a, #facc15);
+	border: 2px solid #fde68a;
+	color: #1e293b;
+}
+
+.hide:hover, .show:hover {
+	border: 2px solid #f59e0b;
+	background: #fff7da;
+	transform: translateY(-2px);
+}
+
+/* === INPUT CARD === */
+.cards {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+/* INPUTLAR */
+.cards input {
+	padding: 12px 14px;
+	border-radius: 10px;
+	border: 1px solid #d1d5db;
+	font-size: 15px;
+	outline: none;
+	color: #1e293b;
+	transition: 0.25s ease;
+}
+
+.cards input:focus {
+	border-color: #facc15;
+	box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.35);
+}
+
+/* === YANGILASH TUGMASI === */
+.update-btn {
+	background: #1e293b;
+	color: white;
+	border: 2px solid transparent;
+}
+
+.update-btn:hover {
+	background: #facc15;
+	color: #1e293b;
+	border-color: #eab308;
+	transform: translateY(-2px);
+}
+
+/* === RESPONSIVE === */
 @media (max-width: 600px) {
-  .admin-header {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
+	.admin-card {
+		padding: 20px;
+	}
 
-  .admin-header h1 {
-    font-size: 20px;
-  }
+	.top-buttons {
+		flex-direction: column;
+	}
 
-  .logout-btn {
-    width: 100%;
-  }
-
-  .admin-card {
-    padding: 18px;
-  }
-
-  .admin-table th,
-  .admin-table td {
-    padding: 10px;
-    font-size: 12.5px;
-  }
-
-  .device-img {
-    width: 45px;
-    height: 45px;
-  }
+	button {
+		width: 100%;
+	}
 }
 
 @media (max-width: 400px) {
-  .admin-header h1 {
-    font-size: 18px;
-  }
+	.admin-card {
+		padding: 16px;
+	}
 
-  .admin-table {
-    min-width: unset;
-    font-size: 12px;
-  }
+	.cards input {
+		font-size: 14px;
+		padding: 10px 12px;
+	}
 }
