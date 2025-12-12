@@ -1,0 +1,27 @@
+.notify {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    font-weight: 600;
+    z-index: 9999;
+    border-left: 6px solid;
+    animation: slideIn 0.5s ease;
+}
+
+.notify.success {
+    border-color: #4CAF50;
+}
+
+.notify.error {
+    border-color: #ff4444;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0); }
+}

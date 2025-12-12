@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import Notification from "../../components/notification/Notification.jsx";
+
 import "./AdminPage.css";
 
 function AdminPage() {
@@ -9,6 +11,10 @@ function AdminPage() {
 		adminname: "",
 		adminpassword: ""
 	});
+	const [notify, setNotify] = useState(null);
+	const showNotify = (msg, type = "success") => {
+		setNotify({ msg, type });
+	};
 
 	// Loglarni olish
 	useEffect(() => {
@@ -32,12 +38,10 @@ function AdminPage() {
 
 	// Parol yangilash
 	const updatePassword = () => {
-		// bo‘sh bo‘lmagan fieldlarni ajratib olish
 		const filteredForm = Object.fromEntries(
 			Object.entries(form).filter(([_, value]) => value.trim() !== "")
 		);
 
-		// agar hammasi bo‘sh bo‘lsa
 		if (Object.keys(filteredForm).length === 0) {
 			alert("Hech bo‘lmaganda bitta maydonni to‘ldiring!");
 			return;
@@ -53,8 +57,7 @@ function AdminPage() {
 			.then((res) => res.json())
 			.then((data) => {
 				console.log("Yangilandi:", data);
-				alert("Ma'lumotlar yangilandi!");
-				// xohlasang formani tozalash
+				showNotify("Ma'lumotlar yangilandi!", "success");
 				setForm({
 					username: "",
 					password: "",
@@ -62,14 +65,25 @@ function AdminPage() {
 					adminpassword: ""
 				});
 			})
-			.catch((err) => console.error("Xatolik:", err));
+			.catch((err) => console.error("Xatolik:", err)); showNotify("Xatolik yuz berdi!", "error");
+
 	};
 
 
 	return (
 		<div className="admin-container">
-			<div className="admin-card">
+			<div>
+				{notify && (
+					<Notification
+						message={notify.msg}
+						type={notify.type}
+						onClose={() => setNotify(null)}
+					/>
+				)}
 
+				{/* qolgan kodlaring */}
+			</div>
+			<div className="admin-card">
 				<button
 					className="hide"
 					onClick={() => {
@@ -81,8 +95,8 @@ function AdminPage() {
 							body: JSON.stringify({ students_data: false })
 						})
 							.then(res => res.json())
-							.then(data => console.log("Berkitildi:", data))
-							.catch(err => console.error("Xatolik:", err));
+							.then(data => console.log("Berkitildi:", data)); showNotify("Ma'lumotlar Berkitildi!", "success")
+							.catch(err => console.error("Xatolik:", err)); showNotify("Xatolik yuz berdi!", "error");
 					}}
 				>
 					Ma'lumotlarni berkitish
@@ -100,8 +114,8 @@ function AdminPage() {
 							body: JSON.stringify({ students_data: true })
 						})
 							.then(res => res.json())
-							.then(data => console.log("Ochildi:", data))
-							.catch(err => console.error("Xatolik:", err));
+							.then(data => console.log("Ochildi:", data)); showNotify("Ma'lumotlar Ko'rinadi!", "success")
+								.catch(err => console.error("Xatolik:", err)); showNotify("Xatolik yuz berdi!", "error");
 					}}
 				>
 					Ma'lumotlarni ko'rish
