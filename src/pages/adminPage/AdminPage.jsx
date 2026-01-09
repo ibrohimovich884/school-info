@@ -47,7 +47,8 @@ function AdminPage() {
 			return;
 		}
 
-		fetch("http://localhost:5000/updatePass", {
+		fetch("<https://four0-mak-server-3.onrender.com/updatePass", {
+		// fetch("http://localhost:5000/updatePass", {
 			method: "PATCH",
 			headers: {
 				"Content-Type": "application/json"
