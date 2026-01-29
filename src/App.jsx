@@ -1,4 +1,4 @@
-import { useState, lazy } from "react";
+import { useState, lazy, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router";
 
 import Home from './pages/home/Home.jsx';
@@ -22,28 +22,30 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    <Routes>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
 
-      <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
 
-      {!isLoggedIn ? (
-        <Route path="*" element={<Navigate to="/login" replace />} />
-      ) : (
-        <Route path="/" element={<RootLayout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
+        {!isLoggedIn ? (
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        ) : (
+          <Route path="/" element={<RootLayout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="contact" element={<Contact />} />
 
-          <Route path="grade/:gradeId" element={<GradePage />}>
-            <Route path="girls" element={<GirlsPage />} />
-            <Route path="boys" element={<BoysPage />} />
+            <Route path="grade/:gradeId" element={<GradePage />}>
+              <Route path="girls" element={<GirlsPage />} />
+              <Route path="boys" element={<BoysPage />} />
+            </Route>
+
+            <Route path="admin" element={<AdminPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
-
-          <Route path="admin" element={<AdminPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      )}
-    </Routes>
+        )}
+      </Routes>
+    </Suspense>
   );
 }
 
