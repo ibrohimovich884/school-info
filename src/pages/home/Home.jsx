@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router";
+import { API_URL } from "../../config.js";
 import "./home.css";
 
 function Home() {
@@ -11,7 +12,7 @@ function Home() {
     useEffect(() => {
         // Bu yerda barcha sinflar ro'yxatini yuklaydigan API bo'lishi kerak
         // Agar API bo'lmasa, har bir sinfni alohida fetch qilib concat qilish kerak
-        fetch("https://four0-mak-server-3.onrender.com/all-students") 
+        fetch(`${API_URL}/all-students`) 
             .then(res => res.json())
             .then(data => setAllStudents(data))
             .catch(err => console.error("Qidiruv ma'lumotlarini yuklashda xato:", err));
@@ -56,7 +57,7 @@ function Home() {
 
             <h2 className="grade-title">Sinfingizni tanlang!</h2>
             <div className="grade-list">
-                {["7a", "7b", "8a", "8b", "9a", "9b", "9d"].map(grade => (
+                {["8a", "8b", "9a", "9b", "10a", "10b", "10d"].map(grade => (
                     <NavLink key={grade} to={`/grade/${grade}`} className="grade-card">
                         {grade.toUpperCase().replace('A', '-A').replace('B', '-B').replace('D', '-D')}
                     </NavLink>

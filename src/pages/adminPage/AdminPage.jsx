@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Notification from "../../components/notification/Notification.jsx";
+import { API_URL } from "../../config.js";
 import "./AdminPage.css";
 
 function AdminPage() {
@@ -20,7 +21,7 @@ function AdminPage() {
 
     // Loglarni olish
     useEffect(() => {
-        fetch("https://four0-mak-server-3.onrender.com/logs")
+        fetch(`${API_URL}/logs`)
             .then((res) => res.json())
             .then((data) => {
                 if (data.success) {
@@ -39,7 +40,7 @@ function AdminPage() {
 
     // Ma'lumotlarni berkitish yoki ochish uchun umumiy funksiya
     const handleToggleData = (status) => {
-        fetch("https://four0-mak-server-3.onrender.com/hideData/hide", {
+        fetch(`${API_URL}/hideData/hide`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ students_data: status })
@@ -65,7 +66,7 @@ function AdminPage() {
             return;
         }
 
-        fetch("https://four0-mak-server-3.onrender.com/updatePass", { // URL to'g'irlandi
+        fetch(`${API_URL}/updatePass`, { // URL to'g'irlandi
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(filteredForm)

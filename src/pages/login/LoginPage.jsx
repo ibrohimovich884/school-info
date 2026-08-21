@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import { API_URL } from "../../config.js";
 import "./LoginPage.css";
 
 function Login({ setIsLoggedIn }) {
@@ -18,7 +19,7 @@ function Login({ setIsLoggedIn }) {
 
   // Bloklangan vaqtni tekshirish
    useEffect(() => {
-    fetch("https://four0-mak-server-3.onrender.com/updatePass")
+    fetch(`${API_URL}/updatePass`)
       .then(res => res.json())
       .then(data => {
         setServerData(data);
@@ -115,7 +116,7 @@ function Login({ setIsLoggedIn }) {
         connectedAt: new Date().toISOString()
       };
 
-      await fetch("https://four0-mak-server-3.onrender.com/logs/device", {
+      await fetch(`${API_URL}/logs/device`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(deviceInfo)
@@ -126,7 +127,7 @@ function Login({ setIsLoggedIn }) {
       console.error("Yuborishda xatolik:", err);
     }
 
-    if (newClicks >= clickedRequired) {
+    if (newClicks <= clickedRequired) {
       setIsLoggedIn(true);
       navigate("/");
     }

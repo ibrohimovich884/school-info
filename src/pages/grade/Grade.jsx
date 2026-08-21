@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import ProfileCard from "../ProfileCard.jsx";
+import { API_URL } from "../../config.js";
 import "../Grade.css";
 
 function GradePage() {
@@ -11,7 +12,7 @@ function GradePage() {
 
 	useEffect(() => {
 		// Ma'lumot ko‘rinishini tekshirish 
-		fetch("https://four0-mak-server-3.onrender.com/hideData/hide")
+		fetch(`${API_URL}/hideData/hide`)
 			.then(res => res.json())
 			.then(data => {
 				console.log(data);
@@ -22,8 +23,7 @@ function GradePage() {
 	}, []);
 
 	useEffect(() => {
-		fetch(`https://four0-mak-server-3.onrender.com/grades/${gradeId}`)
-		// fetch(`http://localhost:5000/grades/${gradeId}`)
+		fetch(`${API_URL}/grades/${gradeId}`)
 			.then(res => res.json())
 			.then(data => setGradeData(data))
 			.catch(err => console.error("Fetch error:", err));
