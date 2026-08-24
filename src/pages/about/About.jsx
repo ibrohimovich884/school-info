@@ -42,7 +42,9 @@ function About() {
               uchinchi shaxslarga berilmaydi.
             </p>
           </div>
-            <p>2026 08 21 12:50</p>
+          <div className="about-box">
+            <p>2026 08 24 13:50</p>
+          </div>
         </div>
 
         <div className="about-highlight">
