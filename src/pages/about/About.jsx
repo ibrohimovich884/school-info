@@ -43,7 +43,7 @@ function About() {
             </p>
           </div>
           <div className="about-box">
-            <p>2026 08 24 13:50</p>
+            <p>2026 08 24 1741</p>
           </div>
         </div>
 
