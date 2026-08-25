@@ -2,6 +2,7 @@ import { useState, lazy, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router";
 
 import Home from './pages/home/Home.jsx';
+import AllStudents from './pages/allStudents/AllStudents.jsx';
 const About = lazy(() => import('./pages/about/About.jsx'));
 // import About from './pages/about/About.jsx';
 const Contact = lazy(() => import('./pages/contact/Contact.jsx'));
@@ -32,6 +33,7 @@ function App() {
         ) : (
           <Route path="/" element={<RootLayout />}>
             <Route index element={<Home />} />
+            <Route path="allStudents" element={<AllStudents />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
 

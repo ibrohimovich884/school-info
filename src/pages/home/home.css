@@ -1,193 +1,198 @@
-/* ===== Grade Section ===== */
-.container {
-    margin: 40px auto;
-    max-width: 1000px;
-    padding: 20px;
+/* ===== Home / sinf tanlash ("hall-pass" bilet uslubi) ===== */
+
+.home-page {
+    margin: 32px auto;
+    max-width: 900px;
+    padding: 48px 32px 56px;
     text-align: center;
+    background: var(--paper);
+    border-radius: 28px;
 }
 
-.grade-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #1e293b;
-    margin-bottom: 32px;
-    letter-spacing: 0.5px;
-}
-
-.grade-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 28px;
-    justify-items: center;
-}
-
-.grade-card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 160px;
-    height: 70px;
-    border-radius: 18px;
-    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-    color: #334155;
+.home-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
     font-weight: 600;
-    font-size: 1.1rem;
-    text-decoration: none;
-    text-align: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-
-.grade-card:hover {
-    background: linear-gradient(135deg, #fde68a, #facc15);
-    color: #0f172a;
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 10px 20px rgba(250, 204, 21, 0.4);
-}
-
-.grade-card.active {
-    background: linear-gradient(135deg, #fbbf24, #f59e0b);
-    color: #0f172a;
-    box-shadow: 0 8px 16px rgba(245, 158, 11, 0.5);
-}
-
-@media (max-width: 768px) {
-    .grade-title {
-        font-size: 1.6rem;
-        margin-bottom: 24px;
-    }
-
-    .grade-list {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-
-    .grade-card {
-        width: 100%;
-        height: 90px;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .grade-list {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .grade-card {
-        width: 100%;
-        height: 80px;
-        font-size: 0.95rem;
-        border-radius: 14px;
-    }
-}
-
-
-/* ===== "Hammasi" tugmasi va barcha o'quvchilar ko'rinishi ===== */
-
-.grade-card.all-card {
-    background: linear-gradient(135deg, #fbbf24, #f59e0b);
-    color: #0e7490;
-    border: none;
-    font-family: inherit;
-}
-
-.grade-card.all-card:hover {
-    background: linear-gradient(135deg, #fde68a, #facc15);
-    color: #083344;
-}
-
-.all-students-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    margin-bottom: 24px;
-    position: relative;
-}
-
-.back-btn {
-    position: absolute;
-    left: 0;
-    padding: 8px 16px;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    background: #fff;
-    color: #334155;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.back-btn:hover {
-    background: #f1f5f9;
-}
-
-.all-students-status {
-    padding: 16px;
-    text-align: center;
-    color: #888;
-    font-size: 14px;
-}
-
-.all-students-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 20px;
-}
-
-.student-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 16px 10px;
-    border-radius: 14px;
-    background: #f8fafc;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.2s ease;
-}
-
-.student-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-}
-
-.student-card img {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    object-fit: cover;
+    letter-spacing: 0.14em;
+    color: var(--teal);
     margin-bottom: 10px;
 }
 
-.student-card-name {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: #1e293b;
-    margin: 0 0 4px;
+.home-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 40px;
+    letter-spacing: -0.01em;
 }
 
-.student-card-grade {
-    font-size: 0.75rem;
-    color: #888;
+.ticket-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+/* Bilet karta: yon tomonlarida "teshik" (hole-punch) va eyebrow/kod
+   orasida uzuq-uzuq ajratuvchi chiziq — hall-pass talonga o'xshatilgan */
+.ticket-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 108px;
+    padding: 18px 12px 14px;
+    border-radius: 16px;
+    background:
+        radial-gradient(circle 7px at 0 40px, var(--paper) 99%, transparent 100%),
+        radial-gradient(circle 7px at 100% 40px, var(--paper) 99%, transparent 100%),
+        var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: 0 1px 2px rgba(28, 35, 51, 0.04);
+    cursor: pointer;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.ticket-card::before {
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 14px;
+    right: 14px;
+    border-top: 1.5px dashed var(--line);
+}
+
+.ticket-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--ink-soft);
+    z-index: 1;
+}
+
+.ticket-code {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ink);
+    z-index: 1;
+}
+
+.ticket-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 20px rgba(245, 166, 35, 0.18);
+}
+
+.ticket-card.active {
+    border-color: var(--accent);
+    background:
+        radial-gradient(circle 7px at 0 40px, var(--paper) 99%, transparent 100%),
+        radial-gradient(circle 7px at 100% 40px, var(--paper) 99%, transparent 100%),
+        #fff8ea;
+}
+
+.ticket-card.active .ticket-code,
+.ticket-card.active .ticket-eyebrow {
+    color: var(--accent-deep);
+}
+
+/* "Hammasi" kartasi — accent bilan to'ldirilgan, ajralib turadi */
+.ticket-card-all {
+    background:
+        radial-gradient(circle 7px at 0 40px, var(--paper) 99%, transparent 100%),
+        radial-gradient(circle 7px at 100% 40px, var(--paper) 99%, transparent 100%),
+        var(--ink);
+    border-color: var(--ink);
+}
+
+.ticket-card-all::before {
+    border-top-color: rgba(255, 255, 255, 0.25);
+}
+
+.ticket-card-all .ticket-eyebrow {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.ticket-code-all {
+    display: flex;
+    gap: 5px;
+}
+
+.ticket-code-all .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.ticket-label {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    z-index: 1;
+}
+
+.ticket-card-all:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 20px rgba(28, 35, 51, 0.22);
+}
+
+@media (max-width: 768px) {
+    .home-page {
+        padding: 36px 20px 44px;
+        border-radius: 20px;
+    }
+
+    .home-title {
+        font-size: 1.6rem;
+        margin-bottom: 28px;
+    }
+
+    .ticket-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
 }
 
 @media (max-width: 480px) {
-    .all-students-grid {
-        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-        gap: 14px;
+    .ticket-grid {
+        grid-template-columns: 1fr;
     }
 
-    .back-btn {
-        position: static;
+    .ticket-card {
+        height: 92px;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 22px;
+        background:
+            radial-gradient(circle 7px at 76px 0, var(--paper) 99%, transparent 100%),
+            radial-gradient(circle 7px at 76px 100%, var(--paper) 99%, transparent 100%),
+            var(--surface);
     }
 
-    .all-students-header {
-        flex-direction: column;
-        gap: 10px;
+    .ticket-card::before {
+        top: 14px;
+        bottom: 14px;
+        left: 76px;
+        right: auto;
+        border-top: none;
+        border-left: 1.5px dashed var(--line);
+    }
+
+    .ticket-card-all {
+        background:
+            radial-gradient(circle 7px at 76px 0, var(--paper) 99%, transparent 100%),
+            radial-gradient(circle 7px at 76px 100%, var(--paper) 99%, transparent 100%),
+            var(--ink);
+    }
+
+    .ticket-card-all::before {
+        border-left-color: rgba(255, 255, 255, 0.25);
     }
 }
