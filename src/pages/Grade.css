@@ -56,6 +56,20 @@
     box-shadow: 0 12px 24px rgba(0, 119, 204, 0.15);
 }
 
+/* Faol bo'lmagan (Active dan boshqa status) o'quvchi kartasi — ko'zga tashlanadigan rang o'zgarishi */
+.profile-card.status-inactive {
+    background: #ffe3e3;
+    border: 2px solid #ff8a8a;
+}
+
+.profile-card.status-inactive:hover {
+    box-shadow: 0 12px 24px rgba(255, 0, 0, 0.15);
+}
+
+.profile-card.status-inactive .profile-info h2 {
+    color: #c0392b;
+}
+
 /* Avatar */
 .profile-card img {
     width: 110px;
@@ -70,6 +84,11 @@
 .profile-card:hover img {
     transform: scale(1.05);
     border: 3px solid #0077cc55;
+}
+
+.profile-card.status-inactive img {
+    filter: grayscale(70%);
+    border: 3px solid #99999955;
 }
 
 /* Ism */
