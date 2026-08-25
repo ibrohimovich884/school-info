@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import "./Home.css";
+import "./home.css";
 
 const GRADES = ["8a", "8b", "9a", "9b", "10a", "10b", "10d"];
 
