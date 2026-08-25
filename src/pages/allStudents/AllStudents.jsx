@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router";
 import { API_URL } from "../../config.js";
 import StudentSearch from "../../components/studentSearch/StudentSearch.jsx";
+import GradeFilter from "../../components/gradeFilter/GradeFilter.jsx";
 import "./AllStudents.css";
 
 const GRADES = ["8a", "8b", "9a", "9b", "10a", "10b", "10d"];
@@ -59,26 +60,9 @@ function AllStudents() {
                 </div>
             </div>
 
-            <StudentSearch students={allStudents} isLoading={isLoading} onSelect={goToStudent} />
-
-            <div className="grade-filter-bar">
-                <button
-                    type="button"
-                    className={`grade-filter-btn${gradeFilter === "" ? " active" : ""}`}
-                    onClick={() => setGradeFilter("")}
-                >
-                    Barchasi
-                </button>
-                {GRADES.map(grade => (
-                    <button
-                        key={grade}
-                        type="button"
-                        className={`grade-filter-btn${gradeFilter === grade ? " active" : ""}`}
-                        onClick={() => setGradeFilter(grade)}
-                    >
-                        {grade.toUpperCase()}
-                    </button>
-                ))}
+            <div className="roster-controls">
+                <StudentSearch students={allStudents} isLoading={isLoading} onSelect={goToStudent} />
+                <GradeFilter grades={GRADES} value={gradeFilter} onChange={setGradeFilter} />
             </div>
 
             {isLoading ? (

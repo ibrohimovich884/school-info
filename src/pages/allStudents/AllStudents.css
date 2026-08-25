@@ -1,4 +1,5 @@
 /* ===== Roster / barcha o'quvchilar (ID-belgi uslubi) ===== */
+
 .roster-page {
     margin: 32px auto;
     max-width: 1000px;
@@ -12,7 +13,7 @@
     align-items: flex-start;
     justify-content: space-between;
     gap: 16px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     text-align: left;
 }
 
@@ -36,7 +37,7 @@
 .roster-header-actions {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     flex-shrink: 0;
 }
 
@@ -62,7 +63,7 @@
     font-weight: 600;
     font-size: 0.85rem;
     cursor: pointer;
-    transition: border-color 0.2s ease, color 0.2s ease;
+    transition: border-color 0.16s ease, color 0.16s ease, transform 0.1s ease;
     white-space: nowrap;
 }
 
@@ -70,43 +71,32 @@
     border-color: var(--ink);
 }
 
+.back-btn:active {
+    transform: scale(0.96);
+}
+
 .roster-status {
-    padding: 40px 16px;
+    padding: 48px 16px;
     text-align: center;
     color: var(--ink-soft);
     font-size: 14px;
 }
 
-.grade-filter-bar {
+/* Qidiruv + sinf-filter bitta qatorda, kerak bo'lsa buklanadi */
+.roster-controls {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 22px 0 26px;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 22px;
 }
 
-.grade-filter-btn {
-    padding: 7px 15px;
-    border-radius: 18px;
-    border: 1px solid var(--line);
-    background: #fff;
-    color: var(--ink-soft);
-    font-family: var(--font-mono);
-    font-weight: 600;
-    font-size: 0.78rem;
-    cursor: pointer;
-    transition: all 0.16s ease;
+.roster-controls .student-search {
+    flex: 1;
+    max-width: none;
+    margin: 0;
 }
 
-.grade-filter-btn:hover {
-    border-color: var(--accent);
-    color: var(--ink);
-}
-
-.grade-filter-btn.active {
-    background: var(--ink);
-    border-color: var(--ink);
-    color: #fff;
-}
+/* ===== Ro'yxat: desktop/tablet — badge-grid ===== */
 
 .roster-grid {
     display: grid;
@@ -114,7 +104,6 @@
     gap: 16px;
 }
 
-/* ID-belgi karta: rasm ustida yupqa halqa, pastida "tag" yorlig'i */
 .student-badge {
     display: flex;
     flex-direction: column;
@@ -134,6 +123,10 @@
     box-shadow: 0 10px 18px rgba(28, 35, 51, 0.08);
 }
 
+.student-badge:active {
+    transform: translateY(0) scale(0.98);
+}
+
 .student-badge-photo {
     width: 60px;
     height: 60px;
@@ -141,6 +134,7 @@
     padding: 3px;
     border: 1.5px solid var(--line);
     margin-bottom: 12px;
+    flex-shrink: 0;
     transition: border-color 0.16s ease;
 }
 
@@ -174,7 +168,10 @@
     background: #edf7f7;
     border-radius: 10px;
     padding: 2px 8px;
+    white-space: nowrap;
 }
+
+/* ===== Tablet ===== */
 
 @media (max-width: 640px) {
     .roster-page {
@@ -184,17 +181,92 @@
 
     .roster-header {
         flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
     }
 
     .roster-header-actions {
         align-self: stretch;
         justify-content: space-between;
     }
+
+    .roster-controls {
+        flex-direction: column;
+    }
 }
 
+/* ===== Telefon: grid o'rniga toza qator-ro'yxat (list) ===== */
+
 @media (max-width: 480px) {
+    .roster-page {
+        margin: 16px auto;
+        padding: 22px 14px 28px;
+        border-radius: 16px;
+    }
+
+    .roster-eyebrow {
+        letter-spacing: 0.08em;
+        font-size: 0.65rem;
+    }
+
+    .roster-title {
+        font-size: 1.4rem;
+    }
+
     .roster-grid {
-        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .student-badge {
+        flex-direction: row;
+        align-items: center;
         gap: 12px;
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+    }
+
+    .roster-grid .student-badge:last-child {
+        border-bottom: none;
+    }
+
+    .student-badge:hover {
+        transform: none;
+        box-shadow: none;
+        background: var(--paper);
+    }
+
+    .student-badge:active {
+        transform: none;
+        background: var(--paper);
+    }
+
+    .student-badge-photo {
+        width: 44px;
+        height: 44px;
+        margin-bottom: 0;
+    }
+
+    .student-badge-name {
+        flex: 1;
+        margin: 0;
+        font-size: 0.88rem;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .student-badge-tag {
+        flex-shrink: 0;
     }
 }

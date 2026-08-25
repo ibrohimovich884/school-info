@@ -1,0 +1,117 @@
+.grade-filter {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.grade-filter-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 46px;
+    padding: 0 16px;
+    border-radius: 23px;
+    border: 1px solid var(--line, #dce1ec);
+    background: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.grade-filter-trigger:hover {
+    border-color: var(--teal, #0e7c86);
+}
+
+.grade-filter-trigger.active {
+    border-color: var(--teal, #0e7c86);
+    background: #edf7f7;
+}
+
+.grade-filter-trigger-label {
+    font-family: var(--font-body, inherit);
+    font-size: 0.85rem;
+    color: var(--ink-soft, #5c6478);
+}
+
+.grade-filter-trigger-label strong {
+    font-family: var(--font-mono, inherit);
+    color: var(--ink, #1c2333);
+    font-weight: 600;
+}
+
+.grade-filter-trigger.active .grade-filter-trigger-label strong {
+    color: var(--teal, #0e7c86);
+}
+
+.grade-filter-chevron {
+    color: var(--ink-soft, #5c6478);
+    transition: transform 0.16s ease;
+    flex-shrink: 0;
+}
+
+.grade-filter-chevron.open {
+    transform: rotate(180deg);
+}
+
+.grade-filter-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 180px;
+    max-height: 280px;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid var(--line, #dce1ec);
+    border-radius: 14px;
+    box-shadow: 0 10px 28px rgba(28, 35, 51, 0.12);
+    z-index: 20;
+    padding: 6px;
+}
+
+.grade-filter-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 9px 12px;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    font-family: var(--font-mono, inherit);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink, #1c2333);
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.14s ease;
+}
+
+.grade-filter-option:hover {
+    background: var(--paper, #eef1f7);
+}
+
+.grade-filter-option.selected {
+    background: #edf7f7;
+    color: var(--teal, #0e7c86);
+}
+
+.grade-filter-check {
+    color: var(--teal, #0e7c86);
+    font-weight: 700;
+}
+
+@media (max-width: 640px) {
+    .grade-filter {
+        width: 100%;
+    }
+
+    .grade-filter-trigger {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .grade-filter-menu {
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+}
