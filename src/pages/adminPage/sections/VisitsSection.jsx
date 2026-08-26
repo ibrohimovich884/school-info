@@ -70,11 +70,11 @@ function VisitsSection() {
 
     return (
         <div className="admin-section">
-            <h3 className="admin-section-title">Tashriflar (tracking)</h3>
+            <h3 className="admin-section-title">Tashriflar va kirish tarixi</h3>
             <p className="admin-section-desc">
-                Saytga kim, qachon, qaysi qurilmadan kirgani, nimani qidirgani va qaysi
-                o'quvchini ko'rgani shu yerda ko'rinadi. Jami {uniqueVisitorCount} ta noyob
-                tashrifchi.
+                Saytga kim, qachon, qaysi qurilmadan kirgani (login), qaysi sahifani ko'rgani,
+                nimani qidirgani va qaysi o'quvchini ko'rgani shu yerda ko'rinadi. Jami{" "}
+                {uniqueVisitorCount} ta noyob tashrifchi.
             </p>
 
             <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "10px" }}>
@@ -126,6 +126,8 @@ function VisitsSection() {
                                             ? `"${v.query}" (${v.resultCount ?? "?"} natija)`
                                             : v.type === "viewStudent"
                                             ? v.name || v.studentId || "-"
+                                            : v.type === "login"
+                                            ? (v.role === "admin" ? "Admin sifatida" : "Foydalanuvchi sifatida")
                                             : v.path || "-"}
                                     </td>
                                     <td>{v.ip || "-"}</td>
