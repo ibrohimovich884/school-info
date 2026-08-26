@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router";
-import { API_URL } from "../../config.js";
+import { useStudents } from "../../hooks/useStudents.js";
 import { trackEvent } from "../../utils/tracking.js";
 import "./StudentSearch.css";
 
@@ -21,27 +21,17 @@ import "./StudentSearch.css";
 function StudentSearch({ students, isLoading: isLoadingProp, onSelect, placeholder }) {
     const shouldFetch = students === undefined;
 
-    const [internalStudents, setInternalStudents] = useState([]);
-    const [internalLoading, setInternalLoading] = useState(shouldFetch);
+    // Props berilmagan holatda ham endi alohida fetch qilmaydi — bir xil
+    // markaziy hookdan (useStudents) o'qiydi, shu bilan dataAllowed va kesh
+    // barcha joyda bir xil bo'lib qoladi.
+    const { students: hookStudents, isLoading: hookLoading } = useStudents();
     const [searchTerm, setSearchTerm] = useState("");
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
     const wrapperRef = useRef(null);
 
-    const allStudents = shouldFetch ? internalStudents : students;
-    const isLoading = shouldFetch ? internalLoading : !!isLoadingProp;
-
-    // Faqat props berilmagan holatda o'zi yuklaydi
-    useEffect(() => {
-        if (!shouldFetch) return;
-
-        setInternalLoading(true);
-        fetch(`${API_URL}/all-students`)
-            .then(res => res.json())
-            .then(data => setInternalStudents(Array.isArray(data) ? data : []))
-            .catch(err => console.error("Qidiruv ma'lumotlarini yuklashda xato:", err))
-            .finally(() => setInternalLoading(false));
-    }, [shouldFetch]);
+    const allStudents = shouldFetch ? hookStudents : students;
+    const isLoading = shouldFetch ? hookLoading : !!isLoadingProp;
 
     // Tashqariga bosilganda yopish
     useEffect(() => {

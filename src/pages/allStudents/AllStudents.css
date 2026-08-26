@@ -104,72 +104,9 @@
     gap: 16px;
 }
 
-.student-badge {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 12px 14px;
-    border-radius: 16px;
-    background: var(--surface);
-    border: 1px solid var(--line);
-    cursor: pointer;
-    text-align: center;
-    transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
-}
-
-.student-badge:hover {
-    transform: translateY(-3px);
-    border-color: var(--accent);
-    box-shadow: 0 10px 18px rgba(28, 35, 51, 0.08);
-}
-
-.student-badge:active {
-    transform: translateY(0) scale(0.98);
-}
-
-.student-badge-photo {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    padding: 3px;
-    border: 1.5px solid var(--line);
-    margin-bottom: 12px;
-    flex-shrink: 0;
-    transition: border-color 0.16s ease;
-}
-
-.student-badge:hover .student-badge-photo {
-    border-color: var(--accent);
-}
-
-.student-badge-photo img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
-}
-
-.student-badge-name {
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 0.85rem;
-    color: var(--ink);
-    margin: 0 0 8px;
-    line-height: 1.25;
-}
-
-.student-badge-tag {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    color: var(--teal);
-    background: #edf7f7;
-    border-radius: 10px;
-    padding: 2px 8px;
-    white-space: nowrap;
-}
+/* Har bir kartaning ko'rinishi endi src/components/studentCard/StudentCard.css
+   ichida (.student-card.compact) — shu bilan bu uslub AllStudents va boshqa
+   joylarda ham bir xil bo'lib qoladi. */
 
 /* ===== Tablet ===== */
 
@@ -223,50 +160,18 @@
         overflow: hidden;
     }
 
-    .student-badge {
-        flex-direction: row;
-        align-items: center;
-        gap: 12px;
-        width: 100%;
-        padding: 12px 14px;
-        border-radius: 0;
-        border: none;
-        border-bottom: 1px solid var(--line);
-        text-align: left;
-    }
-
-    .roster-grid .student-badge:last-child {
+    .roster-grid .student-card.compact:last-child {
         border-bottom: none;
     }
 
-    .student-badge:hover {
+    .roster-grid .student-card.compact:hover {
         transform: none;
         box-shadow: none;
         background: var(--paper);
     }
 
-    .student-badge:active {
+    .roster-grid .student-card.compact:active {
         transform: none;
         background: var(--paper);
-    }
-
-    .student-badge-photo {
-        width: 44px;
-        height: 44px;
-        margin-bottom: 0;
-    }
-
-    .student-badge-name {
-        flex: 1;
-        margin: 0;
-        font-size: 0.88rem;
-        min-width: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .student-badge-tag {
-        flex-shrink: 0;
     }
 }

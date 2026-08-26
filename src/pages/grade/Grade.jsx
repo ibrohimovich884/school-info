@@ -1,37 +1,17 @@
 import { useParams } from "react-router";
-import { useEffect, useState } from "react";
-import ProfileCard from "../ProfileCard.jsx";
-import { API_URL } from "../../config.js";
+import { useState } from "react";
+import { useStudents } from "../../hooks/useStudents.js";
+import StudentCard from "../../components/studentCard/StudentCard.jsx";
 import "../Grade.css";
 
 function GradePage() {
 	const { gradeId } = useParams();
-	const [gradeData, setGradeData] = useState(null);
 	const [activeIndex, setActiveIndex] = useState(null);
-	const [dataAllowed, setDataAllowed] = useState(false);
+	const { getByGrade, isLoading, dataAllowed } = useStudents();
 
-	useEffect(() => {
-		// Ma'lumot ko‘rinishini tekshirish 
-		fetch(`${API_URL}/hideData/hide`)
-			.then(res => res.json())
-			.then(data => {
-				console.log(data);
-				setDataAllowed(data?.data?.students_data === true);
-			})
-			.catch(err => console.error("Visibility fetch xato:", err));
+	if (isLoading) return <p>⏳ Yuklanmoqda...</p>;
 
-	}, []);
-
-	useEffect(() => {
-		fetch(`${API_URL}/grades/${gradeId}`)
-			.then(res => res.json())
-			.then(data => setGradeData(data))
-			.catch(err => console.error("Fetch error:", err));
-	}, [gradeId]);
-
-	if (!gradeData) return <p>⏳ Yuklanmoqda...</p>;
-
-	const students = gradeData[`Grade${gradeId}`] || [];
+	const students = getByGrade(gradeId);
 
 	return (
 		<div className="grade">
@@ -39,13 +19,13 @@ function GradePage() {
 
 			<div className="card-list">
 				{students.map((student, idx) => (
-					<ProfileCard
-						key={idx}
-						info={student}
-						index={idx}
-						activeIndex={activeIndex}
-						setActiveIndex={setActiveIndex}
+					<StudentCard
+						key={student.id ?? idx}
+						student={student}
+						variant="detailed"
 						dataAllowed={dataAllowed}
+						isActive={activeIndex === idx}
+						onToggle={() => setActiveIndex(activeIndex === idx ? null : idx)}
 					/>
 				))}
 			</div>
