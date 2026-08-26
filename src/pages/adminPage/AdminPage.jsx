@@ -1,86 +1,31 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Notification from "../../components/notification/Notification.jsx";
-import { API_URL } from "../../config.js";
+import DataControlSection from "./sections/DataControlSection.jsx";
+import CredentialsSection from "./sections/CredentialsSection.jsx";
+import LogsSection from "./sections/LogsSection.jsx";
+import StatsSection from "./sections/StatsSection.jsx";
 import "./AdminPage.css";
+import "./sections/shared/AdminCard.css";
+
+// Yangi bo'lim qo'shish uchun: 1) sections/ ichida yangi komponent yoz,
+// 2) shu ro'yxatga bitta qator qo'sh. Boshqa joyga tegish shart emas.
+const TABS = [
+    { id: "data", label: "Ma'lumotlar", component: DataControlSection },
+    { id: "credentials", label: "Login/Parol", component: CredentialsSection },
+    { id: "logs", label: "Loglar", component: LogsSection },
+    { id: "stats", label: "Statistika", component: StatsSection },
+];
 
 function AdminPage() {
-    const [logs, setLogs] = useState([]);
-    const [form, setForm] = useState({
-        username: "",
-        password: "",
-        adminname: "",
-        adminpassword: ""
-    });
+    const [activeTab, setActiveTab] = useState(TABS[0].id);
     const [notify, setNotify] = useState(null);
 
     const showNotify = (msg, type = "success") => {
         setNotify({ msg, type });
-        // 3 soniyadan keyin xabarnomani o'chirish (ixtiyoriy)
         setTimeout(() => setNotify(null), 3000);
     };
 
-    // Loglarni olish
-    useEffect(() => {
-        fetch(`${API_URL}/logs`)
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.success) {
-                    setLogs(data.data);
-                }
-            })
-            .catch((err) => console.error("Xatolik:", err));
-    }, []);
-
-    const handleChange = (e) => {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value
-        });
-    };
-
-    // Ma'lumotlarni berkitish yoki ochish uchun umumiy funksiya
-    const handleToggleData = (status) => {
-        fetch(`${API_URL}/hideData/hide`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ students_data: status })
-        })
-        .then(res => res.json())
-        .then(data => {
-            const msg = status ? "Ma'lumotlar ochildi!" : "Ma'lumotlar berkitildi!";
-            showNotify(msg, "success");
-        })
-        .catch(err => {
-            console.error("Xatolik:", err);
-            showNotify("Xatolik yuz berdi!", "error");
-        });
-    };
-
-    const updatePassword = () => {
-        const filteredForm = Object.fromEntries(
-            Object.entries(form).filter(([_, value]) => value.trim() !== "")
-        );
-
-        if (Object.keys(filteredForm).length === 0) {
-            alert("Hech bo‘lmaganda bitta maydonni to‘ldiring!");
-            return;
-        }
-
-        fetch(`${API_URL}/updatePass`, { // URL to'g'irlandi
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(filteredForm)
-        })
-        .then((res) => res.json())
-        .then((data) => {
-            showNotify("Ma'lumotlar yangilandi!", "success");
-            setForm({ username: "", password: "", adminname: "", adminpassword: "" });
-        })
-        .catch((err) => {
-            console.error("Xatolik:", err);
-            showNotify("Xatolik yuz berdi!", "error");
-        });
-    };
+    const ActiveComponent = TABS.find((tab) => tab.id === activeTab)?.component;
 
     return (
         <div className="admin-container">
@@ -92,25 +37,21 @@ function AdminPage() {
                 />
             )}
 
-            <div className="admin-card">
-                <div className="action-buttons">
-                    <button className="hide" onClick={() => handleToggleData(false)}>
-                        Ma'lumotlarni berkitish
-                    </button>
-                    <button className="show" onClick={() => handleToggleData(true)}>
-                        Ma'lumotlarni ko'rish
-                    </button>
-                </div>
+            <div className="admin-shell">
+                <nav className="admin-tabs">
+                    {TABS.map((tab) => (
+                        <button
+                            key={tab.id}
+                            className={`admin-tab ${activeTab === tab.id ? "active" : ""}`}
+                            onClick={() => setActiveTab(tab.id)}
+                        >
+                            {tab.label}
+                        </button>
+                    ))}
+                </nav>
 
-                <div className="cards">
-                    <input type="text" name="username" placeholder="Username" value={form.username} onChange={handleChange} />
-                    <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} />
-                    <input type="text" name="adminname" placeholder="Adminname" value={form.adminname} onChange={handleChange} />
-                    <input type="password" name="adminpassword" placeholder="Admin password" value={form.adminpassword} onChange={handleChange} />
-                    
-                    <button className="update-btn" onClick={updatePassword}>
-                        Ma'lumotlarni yangilash
-                    </button>
+                <div className="admin-tab-content">
+                    {ActiveComponent && <ActiveComponent showNotify={showNotify} />}
                 </div>
             </div>
         </div>

@@ -1,0 +1,231 @@
+/* === HAR BIR SECTION UCHUN UMUMIY LAYOUT === */
+.admin-section {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.admin-section-title {
+	margin: 0;
+	font-size: 18px;
+	color: #1e293b;
+}
+
+.admin-section-desc {
+	margin: 0;
+	font-size: 13px;
+	color: #64748b;
+}
+
+.admin-status {
+	text-align: center;
+	color: #64748b;
+	padding: 20px 0;
+	font-size: 14px;
+}
+
+/* === TUGMALAR (yonma-yon) === */
+.action-buttons {
+	display: flex;
+	gap: 12px;
+}
+
+.action-buttons button {
+	flex: 1;
+}
+
+button {
+	border: none;
+	cursor: pointer;
+	padding: 12px;
+	font-size: 15px;
+	border-radius: 10px;
+	font-weight: 600;
+	transition: 0.25s ease;
+}
+
+.hide, .show {
+	background: linear-gradient(135deg, #fde68a, #facc15);
+	border: 2px solid #fde68a;
+	color: #1e293b;
+}
+
+.hide:hover, .show:hover {
+	border: 2px solid #f59e0b;
+	background: #fff7da;
+	transform: translateY(-2px);
+}
+
+/* === INPUT KARTASI === */
+.cards {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.cards input {
+	padding: 12px 14px;
+	border-radius: 10px;
+	border: 1px solid #d1d5db;
+	font-size: 15px;
+	outline: none;
+	color: #1e293b;
+	transition: 0.25s ease;
+}
+
+.cards input:focus {
+	border-color: #facc15;
+	box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.35);
+}
+
+.update-btn {
+	background: #1e293b;
+	color: white;
+	border: 2px solid transparent;
+}
+
+.update-btn:hover {
+	background: #facc15;
+	color: #1e293b;
+	border-color: #eab308;
+	transform: translateY(-2px);
+}
+
+/* === LOGLAR JADVALI === */
+.logs-search {
+	padding: 12px 14px;
+	border-radius: 10px;
+	border: 1px solid #d1d5db;
+	font-size: 14px;
+	outline: none;
+	color: #1e293b;
+}
+
+.logs-search:focus {
+	border-color: #facc15;
+	box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.35);
+}
+
+.logs-table-wrap {
+	overflow-x: auto;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+}
+
+.logs-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 13px;
+}
+
+.logs-table th, .logs-table td {
+	padding: 10px 12px;
+	text-align: left;
+	white-space: nowrap;
+	border-bottom: 1px solid #e2e8f0;
+}
+
+.logs-table th {
+	background: #f8fafc;
+	color: #475569;
+	font-weight: 600;
+}
+
+.logs-table tr:last-child td {
+	border-bottom: none;
+}
+
+/* === STATISTIKA === */
+.stats-summary {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+}
+
+.stat-box {
+	background: #f8fafc;
+	border-radius: 12px;
+	padding: 14px 8px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+}
+
+.stat-number {
+	font-size: 22px;
+	font-weight: 700;
+	color: #1e293b;
+}
+
+.stat-label {
+	font-size: 11px;
+	color: #64748b;
+	text-align: center;
+}
+
+.grade-bars {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.grade-bar-row {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.grade-bar-label {
+	width: 40px;
+	font-size: 13px;
+	font-weight: 600;
+	color: #475569;
+}
+
+.grade-bar-track {
+	flex: 1;
+	height: 10px;
+	background: #f1f5f9;
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.grade-bar-fill {
+	height: 100%;
+	background: linear-gradient(90deg, #fde68a, #facc15);
+	border-radius: 6px;
+	transition: width 0.3s ease;
+}
+
+.grade-bar-count {
+	width: 24px;
+	text-align: right;
+	font-size: 13px;
+	color: #1e293b;
+	font-weight: 600;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+	.action-buttons {
+		flex-direction: column;
+	}
+
+	button {
+		width: 100%;
+	}
+}
+
+@media (max-width: 500px) {
+	.stats-summary {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 400px) {
+	.cards input {
+		font-size: 14px;
+		padding: 10px 12px;
+	}
+}
