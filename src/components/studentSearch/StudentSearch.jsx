@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router";
 import { API_URL } from "../../config.js";
+import { trackEvent } from "../../utils/tracking.js";
 import "./StudentSearch.css";
 
 /**
@@ -58,6 +59,19 @@ function StudentSearch({ students, isLoading: isLoadingProp, onSelect, placehold
         : (allStudents || []).filter(student =>
             (student?.["Full name"] || "").toLowerCase().includes(searchTerm.toLowerCase())
           );
+
+    // Har harf bosilganda emas, yozish to'xtaganidan 600ms keyin — ortiqcha so'rov yubormaslik uchun
+    useEffect(() => {
+        const query = searchTerm.trim();
+        if (!query) return;
+
+        const timer = setTimeout(() => {
+            trackEvent("search", { query, resultCount: filteredStudents.length });
+        }, 600);
+
+        return () => clearTimeout(timer);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [searchTerm]);
 
     const handleChange = (e) => {
         setSearchTerm(e.target.value);

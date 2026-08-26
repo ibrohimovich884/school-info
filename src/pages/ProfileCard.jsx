@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { trackEvent } from "../utils/tracking.js";
 import "./Grade.css";
 
 function isValidInstagram(handle) {
@@ -13,6 +14,18 @@ function ProfileCard({ info, index, activeIndex, setActiveIndex, dataAllowed }) 
 	const isActive = activeIndex === index;
 	const isInactive = info.Status !== "Active";
 	const [cachedInfo, setCachedInfo] = useState(() => info);
+
+	// Karta ochilib, batafsil ma'lumot ko'rsatilganda kuzatuvga yozamiz
+	useEffect(() => {
+		if (isActive) {
+			trackEvent("viewStudent", {
+				studentId: info.id,
+				name: info["Full name"] || info.Name,
+				gradeId: info.gradeId,
+			});
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isActive]);
 
 	useEffect(() => {
 		const cacheKey = `profile-${info.id}`;

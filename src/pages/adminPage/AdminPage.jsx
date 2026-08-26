@@ -4,6 +4,9 @@ import DataControlSection from "./sections/DataControlSection.jsx";
 import CredentialsSection from "./sections/CredentialsSection.jsx";
 import LogsSection from "./sections/LogsSection.jsx";
 import StatsSection from "./sections/StatsSection.jsx";
+import BackupSection from "./sections/BackupSection.jsx";
+import SessionsSection from "./sections/SessionsSection.jsx";
+import VisitsSection from "./sections/VisitsSection.jsx";
 import "./AdminPage.css";
 import "./sections/shared/AdminCard.css";
 
@@ -14,6 +17,9 @@ const TABS = [
     { id: "credentials", label: "Login/Parol", component: CredentialsSection },
     { id: "logs", label: "Loglar", component: LogsSection },
     { id: "stats", label: "Statistika", component: StatsSection },
+    { id: "backup", label: "Zaxiralash", component: BackupSection },
+    { id: "sessions", label: "Kirish tarixi", component: SessionsSection },
+    { id: "visits", label: "Tashriflar", component: VisitsSection },
 ];
 
 function AdminPage() {

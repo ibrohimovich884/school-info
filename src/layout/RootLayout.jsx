@@ -1,8 +1,17 @@
+import { useEffect } from "react"
 import Header from "../components/header/Header.jsx"
 import Footer from "../components/footer/Footer.jsx"
-import { Outlet } from "react-router"
+import { Outlet, useLocation } from "react-router"
+import { trackEvent } from "../utils/tracking.js"
 import './Layout.css'
 function RootLayout() {
+    const location = useLocation();
+
+    // Har bir sahifa almashganda (login qilingandan keyingi barcha navigatsiya) kuzatamiz
+    useEffect(() => {
+        trackEvent("pageView");
+    }, [location.pathname]);
+
     return (
         <>
             <div className="layout">

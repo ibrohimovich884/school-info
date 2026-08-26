@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { API_URL } from "../../config.js";
+import { trackEvent } from "../../utils/tracking.js";
 import "./LoginPage.css";
 
 function Login({ setIsLoggedIn }) {
@@ -52,6 +53,11 @@ function Login({ setIsLoggedIn }) {
     return () => clearInterval(timer);
   }, [timeLeft]);
 
+  // Muvaffaqiyatli kirishni backendga yozib qo'yish (fire-and-forget — login jarayonini bloklamaydi)
+  const trackSession = (role) => {
+    trackEvent("login", { role }); // role: "admin" | "user"
+  };
+
   // LOGIN SUBMIT
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -75,6 +81,7 @@ function Login({ setIsLoggedIn }) {
 
     // ADMIN tekshiruv
     if (username === adminname && password === adminpassword) {
+      trackSession("admin");
       setIsLoggedIn(true);
       navigate("/admin");
       return;
@@ -82,6 +89,7 @@ function Login({ setIsLoggedIn }) {
 
     // ODDIY USER tekshiruv
     if (username === userU && password === userP) {
+      trackSession("user");
       setIsLoggedIn(true);
       navigate("/");
       return;
