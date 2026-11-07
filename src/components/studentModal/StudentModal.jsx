@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router";
-import { trackEvent } from "../../utils/tracking.js";
+import { trackStudentDetailView, trackStudentAction } from "../../utils/tracking.js";
 import "./StudentModal.css";
 
 function isValidInstagram(handle) {
@@ -11,14 +11,25 @@ function isValidInstagram(handle) {
 
 function StudentModal({ student, onClose, dataAllowed = true }) {
     const navigate = useNavigate();
+    const openTimeRef = useRef(null);
 
     useEffect(() => {
         if (!student) return;
-        trackEvent("viewStudent", {
-            studentId: student.id,
-            name: student["Full name"] || student.Name,
-            gradeId: student.gradeId,
-        });
+
+        const isInactive = student.Status && student.Status !== "Active";
+        const fieldsViewed = [
+            "Ism: " + (student.Name || "-"),
+            "To'liq ism: " + (student["Full name"] || "-"),
+            student.Birthday ? `Tug'ilgan kun: ${student.Birthday}` : null,
+            student.Talked ? `Gaplashgan: ${student.Talked}` : null,
+            student.Instagram ? `Instagram: @${student.Instagram}` : "Instagram: Yo'q",
+            student.updateTime ? `Yangilanish: ${student.updateTime}` : null,
+            isInactive ? `Status: ${student.Status || "Arxiv"} (${student.StatusReason || "Sababsiz"})` : null,
+            isInactive && student.TransferredTo ? `Ketgan joyi: ${student.TransferredTo}` : null,
+        ].filter(Boolean);
+
+        openTimeRef.current = Date.now();
+        trackStudentDetailView(student, fieldsViewed, 0, "modal_open");
 
         const handleKeyDown = (e) => {
             if (e.key === "Escape") {
@@ -27,7 +38,13 @@ function StudentModal({ student, onClose, dataAllowed = true }) {
         };
 
         document.addEventListener("keydown", handleKeyDown);
-        return () => document.removeEventListener("keydown", handleKeyDown);
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+            const durationSec = (Date.now() - openTimeRef.current) / 1000;
+            if (durationSec >= 0.8) {
+                trackStudentDetailView(student, fieldsViewed, durationSec, "modal_closed");
+            }
+        };
     }, [student, onClose]);
 
     if (!student) return null;
@@ -38,6 +55,7 @@ function StudentModal({ student, onClose, dataAllowed = true }) {
     const fullName = student["Full name"] || student.Name || "Noma'lum o'quvchi";
 
     const handleGoToClass = () => {
+        trackStudentAction("navigate_grade", student, { targetGrade: student.gradeId });
         onClose();
         if (student.gradeId) {
             const target = student.id || encodeURIComponent(fullName);
@@ -117,6 +135,7 @@ function StudentModal({ student, onClose, dataAllowed = true }) {
                                             target="_blank"
                                             rel="noreferrer"
                                             className="modal-link"
+                                            onClick={() => trackStudentAction("click_instagram", student, { instagram: student.Instagram })}
                                         >
                                             @{student.Instagram.replace(/^@/, '')}
                                         </a>

@@ -6,7 +6,10 @@ const TYPE_LABELS = {
     pageView: "Sahifa ko'rildi",
     login: "Kirdi",
     search: "Qidirdi",
+    search_open: "Qidirib ochdi",
     viewStudent: "O'quvchini ko'rdi",
+    viewStudentDetails: "Sinfda ma'lumot ko'rdi",
+    studentAction: "Amal bajardi",
 };
 
 function VisitsSection() {
@@ -122,7 +125,13 @@ function VisitsSection() {
                                     <td>{(v.visitorId || "-").slice(0, 8)}</td>
                                     <td>{TYPE_LABELS[v.type] || v.type || "-"}</td>
                                     <td>
-                                        {v.type === "search" && v.query
+                                        {v.type === "search_open"
+                                            ? `"${v.query || ''}" ➔ ${v.name || v.studentId}`
+                                            : v.type === "viewStudentDetails"
+                                            ? `${v.name || v.studentId} (${(v.fieldsViewed || []).length} ta ma'lumot, ${v.durationSec || 0}s)`
+                                            : v.type === "studentAction"
+                                            ? `${v.action}: ${v.name || v.studentId}`
+                                            : v.type === "search" && v.query
                                             ? `"${v.query}" (${v.resultCount ?? "?"} natija)`
                                             : v.type === "viewStudent"
                                             ? v.name || v.studentId || "-"

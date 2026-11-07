@@ -4,11 +4,8 @@ import { Routes, Route, Navigate } from "react-router";
 import Home from './pages/home/Home.jsx';
 import AllStudents from './pages/allStudents/AllStudents.jsx';
 const About = lazy(() => import('./pages/about/About.jsx'));
-// import About from './pages/about/About.jsx';
 const Contact = lazy(() => import('./pages/contact/Contact.jsx'));
-// import Contact from './pages/contact/Contact.jsx';
 const RootLayout = lazy(() => import('./layout/RootLayout.jsx'));
-// import RootLayout from './layout/RootLayout.jsx';
 
 // Grade import
 import GradePage from "./pages/grade/Grade.jsx";
@@ -20,23 +17,12 @@ import AdminPage from "./pages/adminPage/AdminPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 
 function App() {
-  const [isLoggedIn, setLoggedInState] = useState(() => {
-    return sessionStorage.getItem("isLoggedIn") === "true";
-  });
-
-  const setIsLoggedIn = (val) => {
-    if (val) {
-      sessionStorage.setItem("isLoggedIn", "true");
-    } else {
-      sessionStorage.removeItem("isLoggedIn");
-    }
-    setLoggedInState(val);
-  };
+  // 1 marta refresh berilganda to'g'ridan-to'g'ri loginga otvorishi uchun:
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
-
         <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
 
         {!isLoggedIn ? (

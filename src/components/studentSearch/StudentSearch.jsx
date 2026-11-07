@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useStudents } from "../../hooks/useStudents.js";
-import { trackEvent } from "../../utils/tracking.js";
+import { trackEvent, trackSearchOpen } from "../../utils/tracking.js";
 import StudentModal from "../studentModal/StudentModal.jsx";
 import "./StudentSearch.css";
 
@@ -111,6 +111,9 @@ function StudentSearch({
     const handleSelect = (student) => {
         setIsOpen(false);
         setHighlightedIndex(-1);
+
+        // Qidirib ochilgan hodisasini yozamiz
+        trackSearchOpen(searchTerm, student, "search_dropdown");
 
         if (onSelect) {
             onSelect(student);

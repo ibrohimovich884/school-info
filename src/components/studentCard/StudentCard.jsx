@@ -1,22 +1,9 @@
-import { useEffect } from "react";
-import { trackEvent } from "../../utils/tracking.js";
+import { useEffect, useRef } from "react";
+import { trackStudentDetailView, trackStudentAction } from "../../utils/tracking.js";
 import "./StudentCard.css";
 
 /**
  * YAGONA KARTA KOMPONENTI.
- *
- * Ilgari bitta o'quvchi ma'lumoti ikki xil joyda, ikki xil komponentda
- * (ProfileCard.jsx va AllStudents.jsx ichidagi "student-badge" divi) alohida
- * render qilinardi. Maydon nomi o'zgarsa yoki yangi logika (masalan
- * dataAllowed tekshiruvi) qo'shilsa, ikkalasini ham qo'lda yangilash kerak
- * bo'lardi — bu xatoga olib keluvchi manba edi.
- *
- * Endi bitta komponent, ikkita ko'rinish (variant):
- *   - variant="compact"  -> "Barcha o'quvchilar" ro'yxati uchun (rasm+ism+sinf)
- *   - variant="detailed" -> Sinf sahifasi uchun (bosilganda batafsil ochiladi)
- *
- * Ikkala variant ham BIR XIL dataAllowed tekshiruvidan o'tadi, shuning uchun
- * admin ma'lumotlarni berkitsa, bu BARCHA ko'rinishlarda bir vaqtda amal qiladi.
  */
 function StudentCard({
 	student,
@@ -28,17 +15,47 @@ function StudentCard({
 	id,
 }) {
 	const isInactive = student.Status && student.Status !== "Active";
+	const openTimeRef = useRef(null);
 
+	// Kartani ochganda qaysi maydonlar ko'ringanini aniqlash va vaqtni hisoblash
 	useEffect(() => {
-		if (variant === "detailed" && isActive) {
-			trackEvent("viewStudent", {
-				studentId: student.id,
-				name: student["Full name"] || student.Name,
-				gradeId: student.gradeId,
-			});
+		if (variant !== "detailed") return;
+
+		const fieldsViewed = [
+			"Ism: " + (student.Name || "-"),
+			"To'liq ism: " + (student["Full name"] || "-"),
+			student.Birthday ? `Tug'ilgan kun: ${student.Birthday}` : null,
+			student.Talked ? `Gaplashgan: ${student.Talked}` : null,
+			student.Instagram ? `Instagram: @${student.Instagram}` : "Instagram: Yo'q",
+			student.updateTime ? `Yangilanish: ${student.updateTime}` : null,
+			isInactive ? `Status: ${student.Status || "Arxiv"} (${student.StatusReason || "Sababsiz"})` : null,
+			isInactive && student.TransferredTo ? `Ketgan joyi: ${student.TransferredTo}` : null,
+		].filter(Boolean);
+
+		if (isActive) {
+			openTimeRef.current = Date.now();
+			// Kartani ochgani va qaysi ma'lumotlar ochilgani
+			trackStudentDetailView(student, fieldsViewed, 0, "grade_page_card_open");
+		} else if (openTimeRef.current) {
+			// Kartani yopganda qancha vaqt ko'rganini qayd etish
+			const durationSec = (Date.now() - openTimeRef.current) / 1000;
+			if (durationSec >= 0.8) {
+				trackStudentDetailView(student, fieldsViewed, durationSec, "grade_page_card_closed");
+			}
+			openTimeRef.current = null;
 		}
+
+		return () => {
+			if (openTimeRef.current) {
+				const durationSec = (Date.now() - openTimeRef.current) / 1000;
+				if (durationSec >= 0.8) {
+					trackStudentDetailView(student, fieldsViewed, durationSec, "grade_page_card_unmount");
+				}
+				openTimeRef.current = null;
+			}
+		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isActive]);
+	}, [isActive, variant]);
 
 	if (!dataAllowed) {
 		return (
@@ -113,7 +130,10 @@ function StudentCard({
 									href={`https://instagram.com/${student.Instagram}`}
 									target="_blank"
 									rel="noreferrer"
-									onClick={(e) => e.stopPropagation()}
+									onClick={(e) => {
+										e.stopPropagation();
+										trackStudentAction("click_instagram", student, { instagram: student.Instagram });
+									}}
 								>
 									{student.Instagram}
 								</a>

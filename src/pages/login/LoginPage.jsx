@@ -109,7 +109,7 @@ function Login({ setIsLoggedIn }) {
     // ADMIN tekshiruv
     if (username === adminname && password === adminpassword) {
       trackSession("admin");
-      setIsLoggedIn(true);
+      setIsLoggedIn(true, "admin");
       navigate("/admin");
       return;
     }
@@ -117,7 +117,7 @@ function Login({ setIsLoggedIn }) {
     // ODDIY USER tekshiruv
     if (username === userU && password === userP) {
       trackSession("user");
-      setIsLoggedIn(true);
+      setIsLoggedIn(true, "user");
       navigate("/");
       return;
     }
@@ -166,7 +166,7 @@ function Login({ setIsLoggedIn }) {
     }
 
     if (newClicks <= clickedRequired) {
-      setIsLoggedIn(true);
+      setIsLoggedIn(true, "user");
       navigate("/");
     }
   };

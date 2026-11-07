@@ -12,7 +12,7 @@ function Footer() {
 
         <nav className="footer-nav">
           <ul>
-            <li><NavLink to="/" onClick={close} end>Home</NavLink></li>
+            <li><NavLink to="/" end>Home</NavLink></li>
             <li><NavLink to="/about">About</NavLink></li>
             <li><NavLink to="/contact">Contact</NavLink></li>
           </ul>

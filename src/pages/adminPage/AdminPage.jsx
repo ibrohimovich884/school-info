@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Notification from "../../components/notification/Notification.jsx";
+import SessionsSection from "./sections/SessionsSection.jsx";
 import DataControlSection from "./sections/DataControlSection.jsx";
 import CredentialsSection from "./sections/CredentialsSection.jsx";
 import LogsSection from "./sections/LogsSection.jsx";
@@ -12,6 +13,7 @@ import "./sections/shared/AdminCard.css";
 // Yangi bo'lim qo'shish uchun: 1) sections/ ichida yangi komponent yoz,
 // 2) shu ro'yxatga bitta qator qo'sh. Boshqa joyga tegish shart emas.
 const TABS = [
+    { id: "control", label: "Nazorat (Control)", component: SessionsSection },
     { id: "data", label: "Ma'lumotlar", component: DataControlSection },
     { id: "credentials", label: "Login/Parol", component: CredentialsSection },
     { id: "logs", label: "Loglar", component: LogsSection },
