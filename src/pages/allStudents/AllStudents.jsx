@@ -1,10 +1,10 @@
 import { useState, useMemo } from "react";
-import { useNavigate } from "react-router";
 import { useStudents } from "../../hooks/useStudents.js";
 import StudentCard from "../../components/studentCard/StudentCard.jsx";
 import StudentSearch from "../../components/studentSearch/StudentSearch.jsx";
 import GradeFilter from "../../components/gradeFilter/GradeFilter.jsx";
 import StudentModal from "../../components/studentModal/StudentModal.jsx";
+import BackButton from "../../components/backButton/BackButton.jsx";
 import "./AllStudents.css";
 
 const GRADES = ["8a", "8b", "9a", "9b", "10a", "10b", "10d"];
@@ -14,7 +14,6 @@ function AllStudents() {
     const [gradeFilter, setGradeFilter] = useState("");
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedStudent, setSelectedStudent] = useState(null);
-    const navigate = useNavigate();
 
     // O'quvchini bosganda sinfga otib ketmaydi — o'sha o'quvchining kartasini ochadi
     const handleStudentClick = (student) => {
@@ -66,11 +65,10 @@ function AllStudents() {
                     {!isLoading && (
                         <span className="roster-count">{sortedFilteredStudents.length} ta</span>
                     )}
-                    <button type="button" className="back-btn" onClick={() => navigate("/")}>
-                        ← Orqaga
-                    </button>
                 </div>
             </div>
+
+            <BackButton to="/" label="Orqaga" />
 
             <div className="roster-controls">
                 <StudentSearch
@@ -86,7 +84,7 @@ function AllStudents() {
             {error ? (
                 <div className="roster-status" style={{ display: "flex", flexDirection: "column", gap: "12px", alignItems: "center" }}>
                     <span>⚠️ Serverga ulanib bo‘lmadi (server uyg‘onmoqda).</span>
-                    <button type="button" onClick={refetch} className="back-btn" style={{ cursor: "pointer" }}>
+                    <button type="button" onClick={refetch} className="retry-btn" style={{ cursor: "pointer" }}>
                         🔄 Qayta urinish
                     </button>
                 </div>

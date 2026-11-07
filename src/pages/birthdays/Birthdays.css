@@ -55,6 +55,32 @@
     background: var(--surface, #ffffff);
     border-radius: 16px;
     border: 1px dashed var(--line, #dce1ec);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.retry-btn {
+    padding: 8px 18px;
+    border: 1px solid var(--line, #dce1ec);
+    border-radius: 20px;
+    background: #ffffff;
+    color: var(--ink, #1c2333);
+    font-family: var(--font-body, sans-serif);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: border-color 0.16s ease, color 0.16s ease, transform 0.1s ease;
+    white-space: nowrap;
+}
+
+.retry-btn:hover {
+    border-color: var(--ink, #1c2333);
+}
+
+.retry-btn:active {
+    transform: scale(0.96);
 }
 
 /* ===== Stats Grid ===== */
@@ -484,7 +510,7 @@
     border: 1px solid var(--line, #dce1ec);
 }
 
-/* ===== Responsive Styles ===== */
+/* ===== Responsive Styles for Mobile (768px, 480px & 375px) ===== */
 
 @media (max-width: 768px) {
     .birthdays-page {
@@ -495,7 +521,7 @@
 
     .birthdays-header {
         flex-direction: column;
-        gap: 12px;
+        gap: 8px;
         margin-bottom: 20px;
     }
 
@@ -506,19 +532,187 @@
     .birthday-filters {
         flex-direction: column;
         align-items: stretch;
+        gap: 10px;
     }
 
     .filter-group {
         width: 100%;
-
+        display: flex;
+        gap: 8px;
     }
 
     .filter-select {
         flex: 1;
+        min-width: 0;
     }
 
     .past-cards-grid,
     .upcoming-cards-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .birthdays-page {
+        margin: 10px auto;
+        padding: 16px 12px 28px;
+        border-radius: 16px;
+    }
+
+    .birthdays-eyebrow {
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+    }
+
+    .birthdays-title {
+        font-size: 1.35rem;
+    }
+
+    .birthdays-subtitle {
+        font-size: 0.78rem;
+    }
+
+    .birthdays-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 24px;
+    }
+
+    .stat-card {
+        padding: 12px 14px;
+        gap: 12px;
+        border-radius: 14px;
+    }
+
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+        border-radius: 10px;
+    }
+
+    .stat-label {
+        font-size: 0.68rem;
+    }
+
+    .stat-value {
+        font-size: 1rem;
+    }
+
+    .stat-value-highlight {
+        font-size: 0.95rem;
+    }
+
+    .stat-sub {
+        font-size: 0.72rem;
+    }
+
+    .past-section {
+        padding: 14px 12px;
+        border-radius: 16px;
+        margin-bottom: 24px;
+    }
+
+    .section-title-wrap {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .section-title {
+        font-size: 1.1rem;
+    }
+
+    .birthday-card {
+        padding: 10px 12px;
+        gap: 10px;
+        border-radius: 14px;
+    }
+
+    .card-photo-wrap {
+        width: 46px;
+        height: 46px;
+    }
+
+    .student-name {
+        font-size: 0.92rem;
+    }
+
+    .student-fullname {
+        font-size: 0.74rem;
+    }
+
+    .grade-badge {
+        font-size: 0.62rem;
+        padding: 2px 6px;
+    }
+
+    .bday-date {
+        font-size: 0.76rem;
+    }
+
+    .days-until-badge,
+    .days-ago-badge {
+        font-size: 0.68rem;
+        padding: 2px 6px;
+    }
+
+    .search-input {
+        padding: 8px 30px 8px 34px;
+        font-size: 0.82rem;
+        border-radius: 12px;
+    }
+
+    .filter-select {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+        border-radius: 12px;
+    }
+}
+
+/* Specific 375px micro-adjustments for ultra-compact iPhone & small phones */
+@media (max-width: 375px) {
+    .birthdays-page {
+        padding: 14px 10px 24px;
+    }
+
+    .birthdays-title {
+        font-size: 1.25rem;
+    }
+
+    .stat-card {
+        padding: 10px 12px;
+    }
+
+    .stat-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.15rem;
+    }
+
+    .card-photo-wrap {
+        width: 42px;
+        height: 42px;
+    }
+
+    .student-name {
+        font-size: 0.88rem;
+    }
+
+    .student-fullname {
+        font-size: 0.7rem;
+    }
+
+    .card-footer-info {
+        gap: 4px;
+    }
+
+    .bday-date {
+        font-size: 0.72rem;
+    }
+
+    .days-until-badge,
+    .days-ago-badge {
+        font-size: 0.65rem;
     }
 }

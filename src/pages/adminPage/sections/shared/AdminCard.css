@@ -8,23 +8,27 @@
 .admin-section-title {
 	margin: 0;
 	font-size: 18px;
+	font-weight: 700;
 	color: #1e293b;
+	line-height: 1.3;
 }
 
 .admin-section-desc {
-	margin: 0;
+	margin: 4px 0 0 0;
 	font-size: 13px;
 	color: #64748b;
+	line-height: 1.5;
 }
 
 .admin-status {
 	text-align: center;
 	color: #64748b;
-	padding: 20px 0;
+	padding: 24px 0;
 	font-size: 14px;
+	font-weight: 500;
 }
 
-/* === TUGMALAR (yonma-yon) === */
+/* === TUGMALAR === */
 .action-buttons {
 	display: flex;
 	gap: 12px;
@@ -37,11 +41,21 @@
 button {
 	border: none;
 	cursor: pointer;
-	padding: 12px;
-	font-size: 15px;
+	padding: 12px 16px;
+	font-size: 14px;
 	border-radius: 10px;
 	font-weight: 600;
-	transition: 0.25s ease;
+	transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+	min-height: 44px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	touch-action: manipulation;
+}
+
+button:focus-visible {
+	outline: 2px solid #facc15;
+	outline-offset: 1px;
 }
 
 .hide, .show {
@@ -53,27 +67,33 @@ button {
 .hide:hover, .show:hover {
 	border: 2px solid #f59e0b;
 	background: #fff7da;
-	transform: translateY(-2px);
+	transform: translateY(-1px);
 }
 
 /* === INPUT KARTASI === */
 .cards {
 	display: flex;
 	flex-direction: column;
-	gap: 15px;
+	gap: 12px;
 }
 
-.cards input {
+.cards input,
+.logs-search {
+	width: 100%;
+	box-sizing: border-box;
 	padding: 12px 14px;
 	border-radius: 10px;
-	border: 1px solid #d1d5db;
-	font-size: 15px;
+	border: 1px solid #cbd5e1;
+	font-size: 14px;
 	outline: none;
 	color: #1e293b;
-	transition: 0.25s ease;
+	background: #ffffff;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+	min-height: 44px;
 }
 
-.cards input:focus {
+.cards input:focus,
+.logs-search:focus {
 	border-color: #facc15;
 	box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.35);
 }
@@ -84,38 +104,33 @@ button {
 	border: 2px solid transparent;
 }
 
-.update-btn:hover {
+.update-btn:hover:not(:disabled) {
 	background: #facc15;
 	color: #1e293b;
 	border-color: #eab308;
-	transform: translateY(-2px);
+	transform: translateY(-1px);
 }
 
-/* === LOGLAR JADVALI === */
-.logs-search {
-	padding: 12px 14px;
-	border-radius: 10px;
-	border: 1px solid #d1d5db;
-	font-size: 14px;
-	outline: none;
-	color: #1e293b;
+.update-btn:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
 }
 
-.logs-search:focus {
-	border-color: #facc15;
-	box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.35);
-}
-
+/* === LOGLAR VA TASHRIFLAR JADVALI === */
 .logs-table-wrap {
+	width: 100%;
 	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
 	border: 1px solid #e2e8f0;
 	border-radius: 12px;
+	background: #ffffff;
 }
 
 .logs-table {
 	width: 100%;
 	border-collapse: collapse;
 	font-size: 13px;
+	min-width: 540px; /* Mobil qurilmada ustunlar qisilib ketmasligi uchun */
 }
 
 .logs-table th, .logs-table td {
@@ -129,37 +144,49 @@ button {
 	background: #f8fafc;
 	color: #475569;
 	font-weight: 600;
+	position: sticky;
+	top: 0;
+	z-index: 1;
 }
 
 .logs-table tr:last-child td {
 	border-bottom: none;
 }
 
+.logs-table tr:hover td {
+	background: #f8fafc;
+}
+
 /* === STATISTIKA === */
 .stats-summary {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 	gap: 10px;
 }
 
 .stat-box {
 	background: #f8fafc;
+	border: 1px solid #e2e8f0;
 	border-radius: 12px;
-	padding: 14px 8px;
+	padding: 14px 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
 	gap: 4px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .stat-number {
 	font-size: 22px;
 	font-weight: 700;
 	color: #1e293b;
+	font-variant-numeric: tabular-nums;
 }
 
 .stat-label {
 	font-size: 11px;
+	font-weight: 500;
 	color: #64748b;
 	text-align: center;
 }
@@ -177,7 +204,7 @@ button {
 }
 
 .grade-bar-label {
-	width: 40px;
+	width: 44px;
 	font-size: 13px;
 	font-weight: 600;
 	color: #475569;
@@ -199,33 +226,51 @@ button {
 }
 
 .grade-bar-count {
-	width: 24px;
+	width: 28px;
 	text-align: right;
 	font-size: 13px;
 	color: #1e293b;
 	font-weight: 600;
+	font-variant-numeric: tabular-nums;
 }
 
-/* === RESPONSIVE === */
-@media (max-width: 600px) {
+/* === RESPONSIVE MODIFIERS === */
+@media (max-width: 640px) {
 	.action-buttons {
 		flex-direction: column;
+		gap: 8px;
 	}
 
 	button {
 		width: 100%;
 	}
+
+	.cards input,
+	.logs-search {
+		font-size: 16px; /* iOS brauzerlarda input avto-zoom'ining oldini oladi */
+		padding: 10px 12px;
+	}
+
+	.admin-section-title {
+		font-size: 16px;
+	}
+
+	.admin-section-desc {
+		font-size: 12px;
+	}
+
+	.stat-box {
+		padding: 10px 6px;
+	}
+
+	.stat-number {
+		font-size: 18px;
+	}
 }
 
-@media (max-width: 500px) {
+@media (max-width: 380px) {
 	.stats-summary {
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
-@media (max-width: 400px) {
-	.cards input {
-		font-size: 14px;
-		padding: 10px 12px;
-	}
-}

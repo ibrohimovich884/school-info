@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
-import { useNavigate } from "react-router";
 import { useStudents } from "../../hooks/useStudents.js";
 import StudentModal from "../../components/studentModal/StudentModal.jsx";
+import BackButton from "../../components/backButton/BackButton.jsx";
 import {
     getPastThreeBirthdays,
     getUpcomingBirthdays,
@@ -18,7 +18,6 @@ function Birthdays() {
     const [selectedMonth, setSelectedMonth] = useState("");
     const [selectedStudent, setSelectedStudent] = useState(null);
 
-    const navigate = useNavigate();
     const todayDate = useMemo(() => new Date(), []);
 
     // 1. Eng yaqin o'tib ketgan 3 ta tug'ilgan kun egasi (xira qilib ko'rsatiladi)
@@ -86,19 +85,15 @@ function Birthdays() {
                         Sinfdoshlar va o'quvchilarning yaqinlashayotgan hamda yaqinda o'tib ketgan tug'ilgan kunlari
                     </p>
                 </div>
-
-                <div className="birthdays-header-actions">
-                    <button type="button" className="back-btn" onClick={() => navigate("/")}>
-                        ← Orqaga
-                    </button>
-                </div>
             </div>
+
+            <BackButton to="/" label="Orqaga" />
 
             {/* General status checks */}
             {error ? (
                 <div className="birthdays-status-box">
                     <span>⚠️ Serverga ulanib bo‘lmadi.</span>
-                    <button type="button" onClick={refetch} className="back-btn">
+                    <button type="button" onClick={refetch} className="retry-btn">
                         🔄 Qayta urinish
                     </button>
                 </div>

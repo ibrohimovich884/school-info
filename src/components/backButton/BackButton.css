@@ -1,0 +1,96 @@
+/* ===== Position Fixed Round Back Button (Dumaloq Orqaga Tugmasi) ===== */
+
+.floating-back-btn,
+.back-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9999;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #0f172a;
+    border: 2px solid #facc15;
+    color: #ffffff;
+    font-size: 1.35rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.4);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    outline: none;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.floating-back-btn .back-btn-icon,
+.back-btn .back-btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.floating-back-btn:hover,
+.back-btn:hover {
+    transform: scale(1.1);
+    background: #1e293b;
+    border-color: #fde047;
+    box-shadow: 0 8px 26px rgba(250, 204, 21, 0.45);
+}
+
+.floating-back-btn:hover .back-btn-icon,
+.back-btn:hover .back-btn-icon {
+    transform: translateX(-3px);
+}
+
+.floating-back-btn:active,
+.back-btn:active {
+    transform: scale(0.94);
+}
+
+/* Tooltip text on hover */
+.back-btn-tooltip {
+    position: absolute;
+    right: 62px;
+    top: 50%;
+    transform: translateY(-50%) translateX(8px);
+    background: #0f172a;
+    color: #ffffff;
+    border: 1px solid rgba(250, 204, 21, 0.5);
+    font-family: var(--font-body, sans-serif);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.floating-back-btn:hover .back-btn-tooltip,
+.back-btn:hover .back-btn-tooltip {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 640px) {
+    .floating-back-btn,
+    .back-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        font-size: 1.25rem;
+    }
+
+    .back-btn-tooltip {
+        display: none;
+    }
+}

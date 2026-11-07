@@ -1,14 +1,14 @@
-import { useParams, useSearchParams, useNavigate } from "react-router";
+import { useParams, useSearchParams } from "react-router";
 import { useState, useEffect } from "react";
 import { useStudents } from "../../hooks/useStudents.js";
 import StudentCard from "../../components/studentCard/StudentCard.jsx";
 import StudentSearch from "../../components/studentSearch/StudentSearch.jsx";
+import BackButton from "../../components/backButton/BackButton.jsx";
 import "../Grade.css";
 
 function GradePage() {
 	const { gradeId } = useParams();
 	const [searchParams] = useSearchParams();
-	const navigate = useNavigate();
 	const [activeIndex, setActiveIndex] = useState(null);
 	const { getByGrade, isLoading, dataAllowed, error, refetch } = useStudents();
 
@@ -92,23 +92,9 @@ function GradePage() {
 		<div className="grade">
 			<div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "20px", flexWrap: "wrap", gap: "12px" }}>
 				<h2 style={{ margin: 0 }}>{gradeId.toUpperCase()} sinf o‘quvchilari</h2>
-				<button
-					type="button"
-					onClick={() => navigate("/")}
-					style={{
-						padding: "6px 14px",
-						borderRadius: "16px",
-						border: "1px solid var(--line, #ddd)",
-						background: "#fff",
-						color: "var(--ink, #333)",
-						cursor: "pointer",
-						fontWeight: "600",
-						fontSize: "0.85rem"
-					}}
-				>
-					← Sinflar
-				</button>
 			</div>
+
+			<BackButton to="/" label="Sinflar" />
 
 			<div style={{ maxWidth: "440px", margin: "0 auto 24px" }}>
 				<StudentSearch

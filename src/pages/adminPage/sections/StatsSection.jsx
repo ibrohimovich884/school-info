@@ -1,45 +1,52 @@
-import { useEffect, useState, useMemo } from "react";
-import { API_URL } from "../../../config.js";
+import { useMemo } from "react";
+import { useStudents } from "../../../hooks/useStudents.js";
 
-// AllStudents.jsx dagi ro'yxat bilan bir xil bo'lishi kerak
 const GRADES = ["8a", "8b", "9a", "9b", "10a", "10b", "10d"];
 
 function StatsSection() {
-    const [students, setStudents] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const { students, isLoading } = useStudents();
 
-    useEffect(() => {
-        setIsLoading(true);
-        fetch(`${API_URL}/all-students`)
-            .then((res) => res.json())
-            .then((data) => setStudents(Array.isArray(data) ? data : []))
-            .catch((err) => console.error("Xatolik:", err))
-            .finally(() => setIsLoading(false));
-    }, []);
+    // Bitta siklda barcha statistik ko'rsatkichlarni hisoblash (O(N) tezlikda)
+    const { gradeCounts, statusCounts, genderCounts, maxGradeCount } = useMemo(() => {
+        const gradeMap = {};
+        GRADES.forEach((g) => (gradeMap[g] = 0));
 
-    const gradeCounts = useMemo(() => {
-        return GRADES.map((grade) => ({
-            grade,
-            count: students.filter((s) => s.gradeId === grade).length
+        let active = 0;
+        let inactive = 0;
+        let boys = 0;
+        let girls = 0;
+
+        for (let i = 0; i < students.length; i++) {
+            const s = students[i];
+
+            // Sinflar
+            if (s.gradeId && gradeMap[s.gradeId] !== undefined) {
+                gradeMap[s.gradeId]++;
+            }
+
+            // Status
+            if (s.Status === "Active") active++;
+            else if (s.Status === "Inactive") inactive++;
+
+            // Gender
+            if (s.Gender === "male" || s.Gender === "M") boys++;
+            else if (s.Gender === "female" || s.Gender === "F") girls++;
+        }
+
+        const countsList = GRADES.map((g) => ({
+            grade: g,
+            count: gradeMap[g] || 0,
         }));
-    }, [students]);
 
-    const statusCounts = useMemo(() => {
-        const active = students.filter((s) => s.Status === "Active").length;
-        const inactive = students.filter((s) => s.Status === "Inactive").length;
-        return { active, inactive };
-    }, [students]);
+        const maxCount = Math.max(1, ...countsList.map((g) => g.count));
 
-    // DIQQAT: Gender maydoni saytda qanday qiymatlar bilan saqlanishiga
-    // aniq ishonch hosil qilmadim ("male"/"female" deb faraz qildim) —
-    // agar boshqacha bo'lsa (masalan "M"/"F"), shu joyni moslashtirish kerak bo'ladi.
-    const genderCounts = useMemo(() => {
-        const boys = students.filter((s) => s.Gender === "male").length;
-        const girls = students.filter((s) => s.Gender === "female").length;
-        return { boys, girls, other: students.length - boys - girls };
+        return {
+            gradeCounts: countsList,
+            statusCounts: { active, inactive },
+            genderCounts: { boys, girls, other: Math.max(0, students.length - boys - girls) },
+            maxGradeCount: maxCount,
+        };
     }, [students]);
-
-    const maxGradeCount = Math.max(1, ...gradeCounts.map((g) => g.count));
 
     if (isLoading) {
         return <div className="admin-status">⏳ Yuklanmoqda...</div>;
@@ -48,7 +55,7 @@ function StatsSection() {
     return (
         <div className="admin-section">
             <h3 className="admin-section-title">Statistika</h3>
-            <p className="admin-section-desc">Jami {students.length} ta o'quvchi</p>
+            <p className="admin-section-desc">Jami {students.length} ta o'quvchi saqlangan</p>
 
             <div className="stats-summary">
                 <div className="stat-box">
@@ -88,3 +95,4 @@ function StatsSection() {
 }
 
 export default StatsSection;
+

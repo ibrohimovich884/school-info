@@ -1,8 +1,10 @@
+import BackButton from "../../components/backButton/BackButton.jsx";
 import "./About.css";
 
 function About() {
   return (
     <div className="about-container">
+      <BackButton to="/" label="Orqaga" />
       <div className="about-card">
         <h1 className="about-title">Biz haqimizda</h1>
         <p className="about-text">

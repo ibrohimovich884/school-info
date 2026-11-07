@@ -19,42 +19,44 @@ function LogsSection() {
             .finally(() => setIsLoading(false));
     }, []);
 
-    // Jadval ustunlari log obyektining kalitlaridan avtomatik olinadi,
-    // shuning uchun backend log formatini o'zgartirsa ham jadval buzilmaydi.
+    // Ustunlar avtomatik
     const columns = useMemo(() => {
         if (logs.length === 0) return [];
         return Object.keys(logs[0]);
     }, [logs]);
 
-    const filteredLogs = useMemo(() => {
-        if (!search.trim()) return logs;
-        const q = search.toLowerCase();
-        return logs.filter((log) =>
-            Object.values(log).some((value) =>
-                String(value ?? "").toLowerCase().includes(q)
-            )
-        );
-    }, [logs, search]);
-
-    // Sana/vaqt maydoni topilsa, eng yangi loglar tepada chiqadi
+    // Qidiruv va sana bo'yicha saralash bitta tezkor pass'da
     const sortedLogs = useMemo(() => {
+        let result = logs;
+
+        if (search.trim()) {
+            const q = search.toLowerCase();
+            result = result.filter((log) =>
+                Object.values(log).some((val) =>
+                    String(val ?? "").toLowerCase().includes(q)
+                )
+            );
+        }
+
         const dateKey = columns.find((c) => /date|time|vaqt|sana/i.test(c));
-        if (!dateKey) return filteredLogs;
-        return [...filteredLogs].sort(
-            (a, b) => new Date(b[dateKey]) - new Date(a[dateKey])
+        if (!dateKey) return result;
+
+        return [...result].sort(
+            (a, b) => new Date(b[dateKey] || 0) - new Date(a[dateKey] || 0)
         );
-    }, [filteredLogs, columns]);
+    }, [logs, search, columns]);
 
     return (
         <div className="admin-section">
             <h3 className="admin-section-title">Amallar tarixi (loglar)</h3>
             <p className="admin-section-desc">
-                Admin tomonidan amalga oshirilgan barcha o'zgarishlar shu yerda ko'rinadi.
+                Admin tomonidan amalga oshirilgan barcha o'zgarishlar tarixi.
             </p>
 
             <input
                 type="text"
                 className="logs-search"
+                style={{ minHeight: "40px" }}
                 placeholder="Loglar ichidan qidirish..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -78,7 +80,9 @@ function LogsSection() {
                             {sortedLogs.map((log, index) => (
                                 <tr key={index}>
                                     {columns.map((col) => (
-                                        <td key={col}>{String(log[col] ?? "-")}</td>
+                                        <td key={col} style={{ fontVariantNumeric: "tabular-nums" }}>
+                                            {String(log[col] ?? "-")}
+                                        </td>
                                     ))}
                                 </tr>
                             ))}
@@ -91,3 +95,4 @@ function LogsSection() {
 }
 
 export default LogsSection;
+

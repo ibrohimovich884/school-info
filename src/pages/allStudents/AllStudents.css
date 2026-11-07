@@ -53,7 +53,7 @@
     white-space: nowrap;
 }
 
-.back-btn {
+.retry-btn {
     padding: 8px 16px;
     border: 1px solid var(--line);
     border-radius: 20px;
@@ -67,11 +67,11 @@
     white-space: nowrap;
 }
 
-.back-btn:hover {
+.retry-btn:hover {
     border-color: var(--ink);
 }
 
-.back-btn:active {
+.retry-btn:active {
     transform: scale(0.96);
 }
 

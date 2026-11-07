@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Notification from "../../components/notification/Notification.jsx";
+import BackButton from "../../components/backButton/BackButton.jsx";
 import SessionsSection from "./sections/SessionsSection.jsx";
 import DataControlSection from "./sections/DataControlSection.jsx";
 import CredentialsSection from "./sections/CredentialsSection.jsx";
@@ -35,6 +36,7 @@ function AdminPage() {
 
     return (
         <div className="admin-container">
+            <BackButton to="/" label="Orqaga" />
             {notify && (
                 <Notification
                     message={notify.msg}
