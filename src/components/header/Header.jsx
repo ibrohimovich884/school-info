@@ -30,6 +30,7 @@ function Header() {
         <nav className={`nav ${open ? "open" : ""}`}>
           <ul>
             <li><NavLink to="/" onClick={close} end>Home</NavLink></li>
+            <li><NavLink to="/birthdays" onClick={close}>Tug'ilgan kunlar 🎂</NavLink></li>
             <li><NavLink to="/about" onClick={close}>About</NavLink></li>
             <li><NavLink to="/contact" onClick={close}>Contact</NavLink></li>
           </ul>

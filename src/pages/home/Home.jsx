@@ -48,6 +48,16 @@ function Home() {
                     </span>
                     <span className="ticket-label">Hammasi</span>
                 </NavLink>
+
+                <NavLink
+                    to="/birthdays"
+                    className={({ isActive }) => `ticket-card ticket-card-all${isActive ? " active" : ""}`}
+                    style={{ borderColor: "var(--accent, #f5a623)" }}
+                >
+                    <span className="ticket-eyebrow" style={{ color: "var(--accent, #f5a623)" }}>TAQVIM</span>
+                    <span className="ticket-code" style={{ fontSize: "1.4rem" }}>🎂</span>
+                    <span className="ticket-label">Tug'ilgan kunlar</span>
+                </NavLink>
             </div>
         </div>
     );

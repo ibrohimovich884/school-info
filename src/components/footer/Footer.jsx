@@ -13,6 +13,7 @@ function Footer() {
         <nav className="footer-nav">
           <ul>
             <li><NavLink to="/" end>Home</NavLink></li>
+            <li><NavLink to="/birthdays">Tug'ilgan kunlar</NavLink></li>
             <li><NavLink to="/about">About</NavLink></li>
             <li><NavLink to="/contact">Contact</NavLink></li>
           </ul>

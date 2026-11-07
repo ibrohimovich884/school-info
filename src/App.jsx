@@ -5,6 +5,7 @@ import Home from './pages/home/Home.jsx';
 import AllStudents from './pages/allStudents/AllStudents.jsx';
 const About = lazy(() => import('./pages/about/About.jsx'));
 const Contact = lazy(() => import('./pages/contact/Contact.jsx'));
+const Birthdays = lazy(() => import('./pages/birthdays/Birthdays.jsx'));
 const RootLayout = lazy(() => import('./layout/RootLayout.jsx'));
 
 // Grade import
@@ -31,6 +32,7 @@ function App() {
           <Route path="/" element={<RootLayout />}>
             <Route index element={<Home />} />
             <Route path="allStudents" element={<AllStudents />} />
+            <Route path="birthdays" element={<Birthdays />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
 
