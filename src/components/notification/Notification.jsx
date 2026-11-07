@@ -8,7 +8,7 @@ function Notification({ message, type = "success", onClose }) {
         }, 3000); // 3 sekunddan keyin o'chadi
 
         return () => clearTimeout(timer);
-    }, []);
+    }, [onClose]);
 
     return (
         <div className={`notify ${type}`}>

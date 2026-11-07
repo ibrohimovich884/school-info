@@ -35,5 +35,7 @@ export const trackEvent = (type, meta = {}) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-    }).catch((err) => console.error("Tracking yuborilmadi:", err));
+    }).catch(() => {
+        // Fire-and-forget — server uxlayotgan yoki ulanmagan bo'lsa xatolik yashiriladi
+    });
 };

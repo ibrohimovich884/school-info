@@ -229,3 +229,25 @@
 		flex-shrink: 0;
 	}
 }
+
+/* Tanlangan o'quvchi kartasini qidiruvdan keyin ko'zga tashlanishi uchun chiroyli highlight */
+@keyframes studentHighlightPulse {
+	0% {
+		box-shadow: 0 0 0 0 rgba(14, 124, 134, 0.6);
+		border-color: var(--teal, #0e7c86);
+		transform: scale(1.02);
+	}
+	70% {
+		box-shadow: 0 0 0 10px rgba(14, 124, 134, 0);
+		border-color: var(--teal, #0e7c86);
+	}
+	100% {
+		box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+		transform: scale(1);
+	}
+}
+
+.student-card.highlight-pulse {
+	animation: studentHighlightPulse 2s ease-out;
+	border: 2px solid var(--teal, #0e7c86) !important;
+}

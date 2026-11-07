@@ -18,7 +18,7 @@ function CredentialsSection({ showNotify }) {
 
     const updatePassword = () => {
         const filteredForm = Object.fromEntries(
-            Object.entries(form).filter(([_, value]) => value.trim() !== "")
+            Object.entries(form).filter(([, value]) => value.trim() !== "")
         );
 
         if (Object.keys(filteredForm).length === 0) {

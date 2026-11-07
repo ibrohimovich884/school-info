@@ -14,18 +14,41 @@ function Login({ setIsLoggedIn }) {
   const [showPassword, setShowPassword] = useState(false);
   const [timeLeft, setTimeLeft] = useState(0);
   const [bonusClicks, setBonusClicks] = useState(0);
-  const [clickedRequired, setClickedRequired] = useState(999);
+  const [clickedRequired] = useState(999);
   const [serverData, setServerData] = useState(null);
+  const [serverStatus, setServerStatus] = useState("loading"); // "loading" | "connected" | "error"
+  const [serverErrorMsg, setServerErrorMsg] = useState("");
 
+  const loadServerData = () => {
+    setServerStatus("loading");
+    setServerErrorMsg("");
+    setError("");
 
-  // Bloklangan vaqtni tekshirish
-   useEffect(() => {
-    fetch(`${API_URL}/updatePass`)
-      .then(res => res.json())
-      .then(data => {
-        setServerData(data);
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 12000);
+
+    fetch(`${API_URL}/updatePass`, { signal: controller.signal })
+      .then((res) => {
+        clearTimeout(timer);
+        if (!res.ok) throw new Error("Server xatosi");
+        return res.json();
       })
-      .catch(err => console.log("Login maʼlumot olinmadi:", err));
+      .then((data) => {
+        setServerData(data);
+        setServerStatus("connected");
+        setServerErrorMsg("");
+      })
+      .catch((err) => {
+        clearTimeout(timer);
+        setServerStatus("error");
+        setServerErrorMsg("Serverga ulanib bo‘lmadi (server uyg‘onmoqda). Qayta urinib ko‘ring.");
+        console.warn("Login maʼlumot olinmadi:", err?.message || err);
+      });
+  };
+
+  // Bloklangan vaqtni tekshirish va server ma'lumotini yuklash
+  useEffect(() => {
+    loadServerData();
   }, []);
 
   // BLOK vaqtini tekshirish
@@ -63,7 +86,11 @@ function Login({ setIsLoggedIn }) {
     e.preventDefault();
 
     if (!serverData) {
-      setError("Serverdan ma’lumot olinmadi!");
+      if (serverStatus === "loading") {
+        setError("Server uyg‘onmoqda, biroz kuting...");
+      } else {
+        setError("Server bilan aloqa yo‘q. 'Qayta ulanish' tugmasini bosing.");
+      }
       return;
     }
 
@@ -117,8 +144,11 @@ function Login({ setIsLoggedIn }) {
 
     // Qurilma ma'lumotlarini backendga yuborish
     try {
+      const rawIp = import.meta.env.VITE_DEVICE_IP || "";
+      const validIp = (rawIp && !rawIp.startsWith("http")) ? rawIp : "192.168.1.10";
+
       const deviceInfo = {
-        ip: "192.168.1.10", // vaqtincha test ip, keyin avtomatik olamiz
+        ip: validIp,
         model: "Redmi 13C",
         image: "https://example.com/redmi13c.png",
         connectedAt: new Date().toISOString()
@@ -131,8 +161,8 @@ function Login({ setIsLoggedIn }) {
       });
 
       console.log("Qurilma ma'lumotlari serverga yuborildi");
-    } catch (err) {
-      console.error("Yuborishda xatolik:", err);
+    } catch {
+      // Server uxlayotgan yoki ulanmagan bo'lsa xatolik dasturga xalaqit bermaydi
     }
 
     if (newClicks <= clickedRequired) {
@@ -147,6 +177,26 @@ function Login({ setIsLoggedIn }) {
       <form className="login-form" onSubmit={handleSubmit}>
         <h1>40-maktab</h1>
         <p>Kirish uchun ma’lumotlaringizni kiriting</p>
+
+        {serverStatus === "loading" && (
+          <div className="server-status-box loading">
+            <span className="spinner-dot"></span>
+            <span>Server bilan aloqa o‘rnatilmoqda...</span>
+          </div>
+        )}
+
+        {serverStatus === "error" && (
+          <div className="server-status-box error">
+            <p style={{ margin: 0 }}>⚠️ {serverErrorMsg || "Serverga ulanib bo‘lmadi"}</p>
+            <button
+              type="button"
+              className="server-retry-btn"
+              onClick={loadServerData}
+            >
+              🔄 Qayta ulanish
+            </button>
+          </div>
+        )}
 
         {error && <p style={{ color: "red", fontWeight: "500" }}>{error}</p>}
         {timeLeft > 0 && (

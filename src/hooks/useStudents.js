@@ -41,8 +41,8 @@ export function useStudents() {
 				setError(null);
 			})
 			.catch((err) => {
-				console.error("O'quvchilarni yuklashda xato:", err);
-				setError(err);
+				setError("Serverga ulanib bo‘lmadi");
+				console.warn("O'quvchilarni yuklashda xato:", err?.message || err);
 			})
 			.finally(() => setIsLoading(false));
 	}, []);
@@ -51,7 +51,7 @@ export function useStudents() {
 		fetch(`${API_URL}/hideData/hide`)
 			.then((res) => res.json())
 			.then((data) => setDataAllowed(data?.data?.students_data === true))
-			.catch((err) => console.error("Visibility fetch xato:", err));
+			.catch((err) => console.warn("Visibility fetch xato:", err?.message || err));
 	}, []);
 
 	useEffect(() => {

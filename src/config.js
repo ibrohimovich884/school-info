@@ -1,4 +1,18 @@
-// Serverning bazaviy manzili shu yerda bitta joyda saqlanadi.
-// Serverni almashtirsang, FAQAT shu qatorni o'zgartirasan (yoki .env dagi VITE_API_URL ni).
-export const API_URL = import.meta.env.VITE_API_URL || "https://four0-mak-server-3.onrender.com";
-// export const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+// Serverning bazaviy manzili
+const rawApiUrl = (import.meta.env.VITE_API_URL || "").trim();
+const rawDeviceIp = (import.meta.env.VITE_DEVICE_IP || "").trim();
+
+let resolvedUrl = "https://four0-mak-server-3.onrender.com";
+
+if (rawApiUrl.startsWith("http://") || rawApiUrl.startsWith("https://")) {
+  if (!rawApiUrl.includes("localhost") && !rawApiUrl.includes("127.0.0.1")) {
+    resolvedUrl = rawApiUrl;
+  } else if (rawDeviceIp.startsWith("http")) {
+    // Agar VITE_DEVICE_IP da haqiqiy render server berilgan bo'lsa
+    resolvedUrl = rawDeviceIp;
+  }
+} else if (rawDeviceIp.startsWith("http")) {
+  resolvedUrl = rawDeviceIp;
+}
+
+export const API_URL = resolvedUrl.replace(/\/+$/, "");

@@ -42,7 +42,7 @@ function ProfileCard({ info, index, activeIndex, setActiveIndex, dataAllowed }) 
 				} else {
 					setCachedInfo(parsed);
 				}
-			} catch (err) {
+			} catch {
 				// Kesh buzilgan bo'lsa, uni tashlab, yangi ma'lumotni saqlaymiz
 				sessionStorage.setItem(cacheKey, freshString);
 				setCachedInfo(info);

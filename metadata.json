@@ -1,0 +1,7 @@
+{
+  "name": "School info",
+  "description": "School students information and administration app",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

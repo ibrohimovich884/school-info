@@ -20,7 +20,18 @@ import AdminPage from "./pages/adminPage/AdminPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedInState] = useState(() => {
+    return sessionStorage.getItem("isLoggedIn") === "true";
+  });
+
+  const setIsLoggedIn = (val) => {
+    if (val) {
+      sessionStorage.setItem("isLoggedIn", "true");
+    } else {
+      sessionStorage.removeItem("isLoggedIn");
+    }
+    setLoggedInState(val);
+  };
 
   return (
     <Suspense fallback={<div>Loading...</div>}>

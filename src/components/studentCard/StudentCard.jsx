@@ -25,6 +25,7 @@ function StudentCard({
 	isActive = false,
 	onToggle,
 	onSelect,
+	id,
 }) {
 	const isInactive = student.Status && student.Status !== "Active";
 
@@ -55,7 +56,7 @@ function StudentCard({
 	// ---- Compact: "Barcha o'quvchilar" ro'yxati uchun ----
 	if (variant === "compact") {
 		return (
-			<div className="student-card compact" onClick={() => onSelect?.(student)}>
+			<div id={id} className="student-card compact" onClick={() => onSelect?.(student)}>
 				<div className="student-card-photo">
 					<img
 						src={student.Image || "/students/default.jpg"}
@@ -83,6 +84,7 @@ function StudentCard({
 
 	return (
 		<div
+			id={id}
 			className={`student-card detailed ${isActive ? "open" : ""} ${isInactive ? "status-inactive" : ""}`}
 			onClick={onToggle}
 			onKeyDown={handleKeyDown}

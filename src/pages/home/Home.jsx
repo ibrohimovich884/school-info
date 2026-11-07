@@ -1,4 +1,5 @@
 import { NavLink } from "react-router";
+import StudentSearch from "../../components/studentSearch/StudentSearch.jsx";
 import "./home.css";
 
 const GRADES = ["8a", "8b", "9a", "9b", "10a", "10b", "10d"];
@@ -14,6 +15,10 @@ function Home() {
         <div className="home-page">
             <p className="home-eyebrow">40-MAKTAB · SINFLAR RO'YXATI</p>
             <h2 className="home-title">Sinfingizni tanlang</h2>
+
+            <div className="home-search-wrapper">
+                <StudentSearch placeholder="O'quvchini qidirish (ism yoki sinf)..." />
+            </div>
 
             <div className="ticket-grid">
                 {GRADES.map(grade => {
